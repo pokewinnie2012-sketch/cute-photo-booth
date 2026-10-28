@@ -1,3 +1,6 @@
-sherpa-onnx>=1.10
+sherpa-onnx
 soundfile
 numpy
+scipy
+pythainlp
+python-crfsuite

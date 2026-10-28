@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>One More Day</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root { --bg: #000; --fg: #f2eee8; --muted: #8d8794; --accent: #ff5c8a; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #000; } }
+  :root[data-theme="dark"] { --bg: #000; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--fg); font-family: Kanit, sans-serif; overflow: hidden; }
+  #wrap { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; }
+  canvas { width: min(100vw, calc(100vh * 16 / 9)); aspect-ratio: 16/9; background: #000; }
+  #bar { position: fixed; left: 0; right: 0; bottom: 0; display: flex; gap: 10px; align-items: center; padding: 10px 16px; background: linear-gradient(transparent, rgba(0,0,0,.85)); opacity: 0; transition: opacity .3s; }
+  body:hover #bar { opacity: 1; }
+  #bar button { background: rgba(255,255,255,.1); color: var(--fg); border: 1px solid rgba(255,255,255,.2); border-radius: 8px; font: 500 14px Kanit, sans-serif; padding: 6px 12px; cursor: pointer; }
+  #seek { flex: 1; accent-color: var(--accent); }
+  #time { color: var(--muted); font-size: 13px; min-width: 110px; text-align: right; font-variant-numeric: tabular-nums; }
+  body.export #bar { display: none; }
+</style>
+</head>
+<body>
+<div id="wrap"><canvas id="cv" width="1920" height="1080"></canvas></div>
+<div id="bar"><button id="pp">▶</button><input id="seek" type="range" min="0" max="10000" value="0"><span id="time">0:00</span></div>
+<audio id="aud" preload="auto"></audio>
+<script>
+  const PART = new URLSearchParams(location.search).get('part') || '1';
+  document.write(`<script src="build/part${PART}.timeline.js"><\/script>`);
+</script>
+<script src="engine/core.js"></script>
+<script src="engine/people.js"></script>
+<script src="engine/sets.js"></script>
+<script src="engine/director.js"></script>
+<script src="engine/render.js"></script>
+<script>
+  const exportMode = new URLSearchParams(location.search).has('export');
+  if (exportMode) document.body.classList.add('export');
+  const aud = document.getElementById('aud'); aud.src = `build/part${PART}.m4a`;
+  const $ = id => document.getElementById(id);
+  const fmt = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+  $('pp').onclick = () => { if (aud.paused) { aud.play().catch(() => {}); $('pp').textContent = '❚❚'; } else { aud.pause(); $('pp').textContent = '▶'; } };
+  $('seek').oninput = e => { aud.currentTime = e.target.value / 10000 * TL.total; renderAt(aud.currentTime); };
+  function loop() { if (!aud.paused) renderAt(aud.currentTime); $('seek').value = aud.currentTime / TL.total * 10000; $('time').textContent = `${fmt(aud.currentTime)} / ${fmt(TL.total)}`; requestAnimationFrame(loop); }
+  window.MOVIE = { renderAt, total: TL.total, fps: TL.fps, canvas: cv };
+  document.fonts.load('400 40px Kanit', 'ก').then(() => document.fonts.load('300 40px Kanit', 'ก')).catch(() => {}).then(() => { renderAt(exportMode ? 0 : 30); window.__ready = true; if (!exportMode) requestAnimationFrame(loop); });
+</script>
+</body>
+</html>

@@ -1,134 +1,164 @@
-"""Voice an episode script with an offline Thai TTS model and inject the result into the episode page.
+"""Voice every line of a parsed screenplay with an offline Thai TTS, checking each take with speech recognition.
 
-    python tools/voice.py script_ep1.json ep1.html
+    python tools/voice.py build/part1.json            # synthesize + verify (cached, safe to re-run)
 
-For every spoken line this synthesizes speech (MMS Thai VITS via sherpa-onnx), gives each character
-their own voice (pitch shift + speed), lays all lines on one timeline (the timeline is driven by the
-real speech lengths), measures a loudness envelope for lip-sync, and writes everything into the page
-between the /*@@TIMELINE*/ and /*@@END*/ markers as `TL` (timeline) and `VOICE_MP3` (base64 audio).
+For each line several takes are generated (original spelling and a phonetic re-spelling, at normal and
+low sampling noise, at two speeds). Each take is transcribed with Whisper and compared with the script;
+the take with the lowest character error rate wins, and generation stops early once a take is accurate.
+Raw winning takes go to build/voice/raw/<key>.wav and a report to build/voice/report_<name>.json, listing
+lines that still mis-recognize so they can get a manual {respelling} in the screenplay.
 
-Model: download https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/vits-mms-tha.tar.bz2
-and extract it, then point MMS_THA_DIR at the extracted vits-mms-tha folder (default: tools/model/vits-mms-tha).
+Models (not in git): MMS Thai VITS for sherpa-onnx and Whisper small for sherpa-onnx, both from
+https://github.com/k2-fsa/sherpa-onnx/releases (tts-models/vits-mms-tha, asr-models/sherpa-onnx-whisper-small).
+Set MMS_THA_DIR and WHISPER_DIR, or put them in tools/model/.
 """
-import base64, hashlib, json, os, re, subprocess, sys, tempfile
+import hashlib, json, os, re, sys, time
 
 import numpy as np
 import sherpa_onnx
 import soundfile as sf
+from pythainlp.tokenize import word_tokenize
+from pythainlp.transliterate import pronunciate
+from pythainlp.util import num_to_thaiword
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-MODEL = os.environ.get('MMS_THA_DIR', os.path.join(HERE, 'model', 'vits-mms-tha'))
-CACHE = os.environ.get('VOICE_CACHE', os.path.join(tempfile.gettempdir(), 'omd-voice-cache'))
-SR = 44100
-FPS = 30            # lip-sync envelope resolution
-GAP = 0.28          # silence between consecutive lines
-FX = {              # extra ffmpeg filters per effect
-    'think': 'aecho=0.8:0.6:45|90:0.22|0.12',
-    'ghost': 'aecho=0.8:0.8:120|240:0.4|0.25,lowpass=f=3200',
-    'pa': 'highpass=f=280,lowpass=f=3400,aecho=0.8:0.7:70|140:0.3|0.18',
+ROOT = os.path.dirname(HERE)
+MMS = os.environ.get('MMS_THA_DIR', os.path.join(HERE, 'model', 'vits-mms-tha'))
+WHISPER = os.environ.get('WHISPER_DIR', os.path.join(HERE, 'model', 'sherpa-onnx-whisper-small'))
+RAW = os.path.join(ROOT, 'build', 'voice', 'raw')
+SR = 16000
+GOOD = 0.2
+
+SPEED = {'kan': 1.05, 'film': 1.05, 'film2': 1.05, 'mom': 1.0, 'dad': .92, 'tae': 1.1, 'ball': 1.0, 'ton': 1.08, 'kong': .95,
+         'fon': 1.08, 'teacher': 1.0, 'teacher2': 1.0, 'pa': 1.0, 'doctor': .95, 'clerk': 1.05, 'fkan': .92, '???': .9, 'student': 1.05,
+         'kan2': 1.0, 'husband': 1.0, 'boss': 1.0, 'child': 1.1}
+EMO_SPEED = {'sad': .92, 'cry': .88, 'soft': .95, 'whisper': .93, 'shout': 1.06, 'angry': 1.04, 'weak': .85, 'tired': .94, 'calm': .95, 'cold': .96}
+LEXICON = {     # word -> respelling, for words both spellings get wrong (filled from review)
+    'มัธยมศึกษา': 'มัดทะยมสึกสา', 'กรุณา': 'กะรุนา', 'โทรทรรศน์': 'โทระทัด', 'ดาราศาสตร์': 'ดาราสาด', 'วิศวะ': 'วิดสะวะ',
+    'แพทย์': 'แพด', 'ฟิล์ม': 'ฟิม', 'กันต์': 'กัน', 'สัญญา': 'สันยา', 'รึไง': 'หรือไง', 'บัดดี้': 'บัดดี้',
 }
 
-_tts = None
-def tts():
-    global _tts
-    if _tts is None:
-        cfg = sherpa_onnx.OfflineTtsConfig(model=sherpa_onnx.OfflineTtsModelConfig(
-            vits=sherpa_onnx.OfflineTtsVitsModelConfig(model=f'{MODEL}/model.onnx', tokens=f'{MODEL}/tokens.txt',
-                                                       noise_scale=0.6, noise_scale_w=0.8, length_scale=1.0),
-            num_threads=4))
-        _tts = sherpa_onnx.OfflineTts(cfg)
-    return _tts
+def tts_engine(noise, noise_w):
+    return sherpa_onnx.OfflineTts(sherpa_onnx.OfflineTtsConfig(model=sherpa_onnx.OfflineTtsModelConfig(
+        vits=sherpa_onnx.OfflineTtsVitsModelConfig(model=f'{MMS}/model.onnx', tokens=f'{MMS}/tokens.txt', noise_scale=noise, noise_scale_w=noise_w),
+        num_threads=4)))
+_eng = {}
+def engine(kind):
+    if kind not in _eng: _eng[kind] = tts_engine(*({'norm': (.6, .8), 'low': (.33, .4)}[kind]))
+    return _eng[kind]
+_rec = None
+def recognizer():
+    global _rec
+    if _rec is None:
+        _rec = sherpa_onnx.OfflineRecognizer.from_whisper(encoder=f'{WHISPER}/small-encoder.int8.onnx', decoder=f'{WHISPER}/small-decoder.int8.onnx',
+                                                         tokens=f'{WHISPER}/small-tokens.txt', language='th', task='transcribe', num_threads=4)
+    return _rec
 
-def normalize(text):
-    """Map text onto the model's alphabet: split sara am, drop marks it can't read; return phrase chunks with pauses."""
-    text = text.replace('ำ', 'ํา').replace('ๆ', '')
-    chunks = []
-    for part in re.split(r'(…|\.\.\.|[!?,])', text):
-        if part in ('…', '...'):
-            chunks.append(('pause', 0.32))
-        elif part in ('!', '?', ','):
-            chunks.append(('pause', 0.12))
-        else:
-            clean = re.sub(r"[^฀-๿0-9' -]", ' ', part).strip()
-            if clean:
-                chunks.append(('say', clean))
-    return chunks
-
-def synth(text, speed):
+def expand(text):
+    """Script text -> what should be heard: repeat words marked with ๆ, spell out numbers."""
+    text = re.sub(r'\d+', lambda m: num_to_thaiword(int(m[0])), text)
     out = []
-    for kind, val in normalize(text):
-        if kind == 'pause':
-            out.append(np.zeros(int(16000 * val), np.float32))
+    for tok in word_tokenize(text, engine='newmm', keep_whitespace=True):
+        if tok.strip() == 'ๆ':
+            prev = next((w for w in reversed(out) if w.strip()), '')
+            out.append(prev)
         else:
-            a = tts().generate(val, sid=0, speed=speed)
-            out.append(np.asarray(a.samples, np.float32))
-    return np.concatenate(out) if out else np.zeros(1600, np.float32)
+            out.append(tok)
+    return ''.join(out).replace('ๆ', '')
 
-def voice_line(line, voices):
-    v = voices[line['who']]
-    fx = line.get('fx') or v.get('fx') or ('think' if line.get('kind') == 'think' else None)
-    key = hashlib.sha1(json.dumps([line.get('tts', line['text']), v, fx]).encode()).hexdigest()[:16]
-    path = os.path.join(CACHE, key + '.wav')
-    if not os.path.exists(path):
-        os.makedirs(CACHE, exist_ok=True)
-        raw = path + '.raw.wav'
-        sf.write(raw, synth(line.get('tts', line['text']), v.get('speed', 1.0)), 16000)
-        af = [f"rubberband=pitch={v.get('pitch', 1.0)}:formant=shifted", f'aresample={SR}']
-        if fx:
-            af.append(FX[fx])
-        af.append('apad=pad_dur=0.05')
-        subprocess.run(['ffmpeg', '-loglevel', 'error', '-y', '-i', raw, '-af', ','.join(af), '-ac', '1', path], check=True)
-        os.remove(raw)
-    x, _ = sf.read(path, dtype='float32')
-    x = x / (np.sqrt(np.mean(x[np.abs(x) > 0.01] ** 2)) + 1e-6) * 0.12   # level-match all characters
-    return np.clip(x, -0.98, 0.98)
+def respell(text):
+    out = []
+    for w in word_tokenize(text, engine='newmm', keep_whitespace=True):
+        if w in LEXICON: out.append(LEXICON[w])
+        elif re.fullmatch(r'[ก-๏]{2,}', w):
+            try: out.append(pronunciate(w).replace('ฺ', '').replace('-', ''))
+            except Exception: out.append(w)
+        else: out.append(w)
+    return ''.join(out)
 
-def envelope(x):
-    hop = SR // FPS
-    rms = np.array([np.sqrt(np.mean(x[i:i + hop] ** 2)) for i in range(0, len(x), hop)])
-    rms = rms / (rms.max() + 1e-6)
-    return ''.join(str(min(9, int(v * 10))) for v in rms)
+def chunks(text):
+    """Split at punctuation into (say|pause) pieces the model can read."""
+    text = text.replace('ำ', 'ํา')
+    out = []
+    for part in re.split(r'(…|\.\.\.|[!?,])', text):
+        if part in ('…', '...'): out.append(('pause', .32))
+        elif part in ('!', '?', ','): out.append(('pause', .14))
+        else:
+            clean = re.sub(r"[^฀-๿' -]", ' ', part).strip()
+            if clean: out.append(('say', clean))
+    return out
 
-def main(script_path, page_path):
-    script = json.load(open(script_path, encoding='utf-8'))
-    voices = script['voices']
-    t, lines, scenes, beats, clips = 0.0, [], {}, {}, []
-    for sc in script['scenes']:
-        t0 = t
-        t += sc.get('lead', 0)
-        for it in sc['items']:
-            if 'beat' in it:
-                beats[it['beat']] = [round(t, 3), round(t + it['dur'], 3)]
-                t += it['dur']
-                continue
-            x = voice_line(it, voices)
-            d = len(x) / SR
-            lines.append({'id': it['id'], 'who': it['who'], 'text': it['text'], 'kind': it.get('kind', 'say'),
-                          't0': round(t, 3), 't1': round(t + d, 3), 'env': envelope(x)})
-            clips.append((t, x))
-            t += d + it.get('gap', GAP)
-            print(f"{it['id']:12s} {it['who']:6s} {d:5.2f}s  {it['text']}")
-        t += sc.get('tail', 0) - (GAP if sc['items'] and 'beat' not in sc['items'][-1] else 0)
-        scenes[sc['id']] = [round(t0, 3), round(t, 3)]
-    total = round(t, 3)
-    for i, l in enumerate(lines):   # subtitles linger a little, but never past the next line
-        nxt = lines[i + 1]['t0'] if i + 1 < len(lines) else total
-        l['s1'] = round(min(l['t1'] + 0.35, nxt - 0.05), 3)
+def synth(text, speed, kind):
+    pieces = []
+    for k, v in chunks(text):
+        if k == 'pause': pieces.append(np.zeros(int(SR * v), np.float32))
+        else: pieces.append(np.asarray(engine(kind).generate(v, sid=0, speed=speed).samples, np.float32))
+    x = np.concatenate(pieces) if pieces else np.zeros(SR // 4, np.float32)
+    # trim leading/trailing near-silence
+    nz = np.where(np.abs(x) > 0.01)[0]
+    return x[max(0, nz[0] - 400): nz[-1] + 800] if len(nz) else x
 
-    track = np.zeros(int(total * SR) + SR, np.float32)
-    for st, x in clips:
-        i = int(st * SR); track[i:i + len(x)] += x
-    with tempfile.TemporaryDirectory() as td:
-        sf.write(f'{td}/v.wav', track, SR)
-        subprocess.run(['ffmpeg', '-loglevel', 'error', '-y', '-i', f'{td}/v.wav', '-c:a', 'libmp3lame', '-b:a', '64k', '-ac', '1', f'{td}/v.mp3'], check=True)
-        mp3 = base64.b64encode(open(f'{td}/v.mp3', 'rb').read()).decode()
+def transcribe(x):
+    s = recognizer().create_stream()
+    s.accept_waveform(SR, np.concatenate([np.zeros(SR // 2, np.float32), x, np.zeros(SR, np.float32)]))
+    recognizer().decode_stream(s)
+    return s.result.text
 
-    tl = {'total': total, 'scenes': scenes, 'beats': beats, 'lines': lines}
-    block = f"/*@@TIMELINE*/\nconst TL = {json.dumps(tl, ensure_ascii=False)};\nconst VOICE_MP3 = '{mp3}';\n/*@@END*/"
-    page = open(page_path, encoding='utf-8').read()
-    page = re.sub(r'/\*@@TIMELINE\*/.*?/\*@@END\*/', lambda m: block, page, flags=re.S)
-    open(page_path, 'w', encoding='utf-8').write(page)
-    print(f'total {total:.1f}s, {len(lines)} voiced lines, voice track {len(mp3) // 1024} KB base64 -> {page_path}')
+def norm(s): return re.sub(r'[^ก-๏]', '', expand(s).replace('ำ', 'ํา'))
+def cer(ref, hyp):
+    a, b = norm(ref), norm(hyp)
+    d = list(range(len(b) + 1))
+    for i in range(1, len(a) + 1):
+        p, d[0] = d[0], i
+        for j in range(1, len(b) + 1):
+            p, d[j] = d[j], min(d[j] + 1, d[j - 1] + 1, p + (a[i - 1] != b[j - 1]))
+    return d[len(b)] / max(1, len(a))
+
+def line_speed(l):
+    sp = SPEED.get(l['who'], 1.0) * EMO_SPEED.get(l.get('emo') or '', 1.0)
+    return round(sp * (.96 if l.get('vo') else 1.0), 3)
+
+def key_for(l):
+    return hashlib.sha1(json.dumps([l.get('tts') or l['text'], line_speed(l), 'v2']).encode()).hexdigest()[:16]
+
+def voice_line(l):
+    path = os.path.join(RAW, key_for(l) + '.wav')
+    meta = path + '.json'
+    if os.path.exists(path) and os.path.exists(meta): return json.load(open(meta, encoding='utf-8'))
+    src = l.get('tts') or l['text']
+    plain = expand(src)
+    sp = line_speed(l)
+    tries = [('resp', respell(plain), sp, 'norm'), ('plain', plain, sp, 'norm'), ('resp-low', respell(plain), sp, 'low'),
+             ('plain-low', plain, sp, 'low'), ('resp-slow', respell(plain), round(sp * .9, 3), 'low')]
+    best = None
+    for name, txt, s, kind in tries:
+        x = synth(txt, s, kind)
+        hyp = transcribe(x)
+        score = cer(l['text'] if not l.get('tts') else l['tts'], hyp)
+        if best is None or score < best[0]: best = (score, name, hyp, x)
+        n_tried = tries.index((name, txt, s, kind)) + 1
+        if best[0] <= GOOD or (n_tried >= 3 and best[0] <= .3): break
+    score, name, hyp, x = best
+    sf.write(path, x, SR)
+    info = {'key': key_for(l), 'cer': round(score, 3), 'take': name, 'heard': hyp, 'dur': round(len(x) / SR, 3)}
+    json.dump(info, open(meta, 'w', encoding='utf-8'), ensure_ascii=False)
+    return info
+
+def main(script):
+    os.makedirs(RAW, exist_ok=True)
+    data = json.load(open(script, encoding='utf-8'))
+    lines = [i for s in data['scenes'] for i in s['items'] if i['type'] == 'line']
+    report, t0 = {}, time.time()
+    for n, l in enumerate(lines, 1):
+        info = voice_line(l)
+        report[l['id']] = dict(info, who=l['who'], text=l['text'])
+        flag = '  <-- check' if info['cer'] > .35 else ''
+        print(f"[{n}/{len(lines)} {time.time() - t0:6.0f}s] {l['id']} {info['cer']:.2f} {info['take']:9s} {l['text'][:40]}{flag}", flush=True)
+    name = os.path.splitext(os.path.basename(script))[0]
+    out = os.path.join(ROOT, 'build', 'voice', f'report_{name}.json')
+    json.dump(report, open(out, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+    bad = [k for k, v in report.items() if v['cer'] > .35]
+    print(f'done: {len(lines)} lines, mean CER {np.mean([v["cer"] for v in report.values()]):.3f}, {len(bad)} to check -> {out}')
 
 if __name__ == '__main__':
-    main(*sys.argv[1:3])
+    main(sys.argv[1])

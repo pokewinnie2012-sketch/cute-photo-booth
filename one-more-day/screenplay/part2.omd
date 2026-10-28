@@ -1,0 +1,618 @@
+# ONE MORE DAY 2 — ขออีกหนึ่งวันกับเธอ
+# ดัดแปลงจากนิยายของ ภูมินริศร์ โชติพงศ์ (Sawasdeekap)
+
+== p2_open | set=street | tod=morning | age=adult | grade=morning | music=light | amb=street | wear=office | part=2
+cast: kan@400>
+~ 2.0 [title] maintitle2
+kan[vo,soft,track]: หลายปีผ่านไปหลังจากวันที่ทุกอย่างจบลง // walk kan 400>1300
+~ 1.4 [wide] walk kan 1300>1700
+
+== p2_office | set=office | tod=day | age=adult | grade=day | music=light | amb=office | wear=office
+cast: kan@820>:sit, tae@1300<
+tae: กันต์ เย็นนี้มึงว่างปะ?
+kan[smile]: ว่างดิ
+tae: งั้นเย็นนี้เจอกัน ร้านเดิมนะ
+kan[smile]: ร้านเดิม
+
+== p2_dinner | set=restaurant | tod=night | age=adult | grade=warm | music=light | amb=cafe | wear=casual
+cast: kan@560>:sit, tae@820<:sit, ball@1080<:sit, ton@1320<:sit, kong@1560<:sit
+tae[tease]: นาน ๆ เจอกันที มึงก็ยังเลือกร้านนี้นะ ไอ้กันต์
+kan[laugh]: ถึงไม่หรู แต่ก็อร่อยทุกจานนะเว้ย
+tae: เห็นไหม มึงดูไอ้บอล
+ton[tease]: มึงนี่อีกคน โตขึ้นแต่กินเยอะเหมือนเดิมเลยนะ
+ball: กูใช้พลังงานเยอะว่ะ
+ton: กูเห็นมึงนั่งทั้งวัน
+kong[calm]: ปล่อยมันเถอะ
+~ 1.0 [wide] laugh tae; laugh ball; laugh kan
+tae: แล้วมึงล่ะกันต์ ชีวิตเป็นไงบ้าง?
+kan: ก็เรื่อย ๆ งานเยอะไปหน่อย แต่กูก็เริ่มชินแล้ว
+cast: kan@560>:sit, tae@820<:sit, ball@1080<:sit, ton@1320<:sit, kong@1560<:sit, fon@1800<
+fon: โทษที ชั้นสายไปนิดหน่อย
+tae[tease]: ไม่นิด รู้ไหมเจ้าของเขาจะปิดร้านอยู่แล้ว
+fon[laugh]: เวอร์
+kan[vo,soft,wide]: หลังเรียนจบ พวกเราก็แยกย้ายกันไปใช้ชีวิตของตัวเอง บางคนแต่งงาน บางคนเปลี่ยนงาน บางคนกำลังผ่อนบ้าน
+kan[vo,soft,cu(kan)]: ชีวิตไม่ได้สมบูรณ์แบบหรอก แต่ผมก็ไม่ได้รู้สึกว่าตัวเองขาดอะไร
+
+== p2_mom | set=dining | tod=night | age=adult | grade=warm | music=light | amb=room | wear=casual
+cast: kan@820>:sit, mom@1150<
+kan: กลับมาแล้วแม่
+mom: กินข้าวมาหรือยัง?
+kan: กินมาแล้ว ร้านเดิม กับเพื่อน ๆ
+mom: เอ้า กินผลไม้ซะ
+kan[laugh]: แม่ ผมอิ่มแล้ว
+mom: กินอีกนิดไม่ได้หรือไง?
+kan[smile]: ครับ ๆ
+mom[soft]: ช่วงนี้งานเป็นไง เหนื่อยไหม?
+kan[soft]: นิดหน่อย
+mom[soft,cu]: แล้วมีความสุขไหม?
+kan[smile]: ก็มีครับ
+kan[vo,soft,wide]: แม่ยังเป็นเหมือนเดิม บางอย่างในชีวิตเปลี่ยนไปเยอะ แต่บางอย่างก็ยังเหมือนเดิม
+
+== p2_dadvisit | set=dining | tod=dusk | age=adult | grade=warm | music=sad | amb=room | wear=casual | home=dad
+cast: kan@820>:sit, dad@1120<:sit
+dad: อ้าว มาแล้วเหรอ กันต์ ซื้ออะไรมาเยอะขนาดนั้น?
+kan[smile]: แม่ฝากมาให้ครับ
+dad: แล้วตอนนี้มีลูกยัง?
+kan[laugh]: คือ ผมยังไม่มีแฟนเลยนะครับ
+dad[laugh]: โอ้ ลืมไปเลย รีบหาได้แล้วนะ เดี๋ยวจะแก่เกินไป
+kan[soft]: ลุงเองล่ะ เป็นไงบ้างครับ?
+~ 1.2 [cu(dad)]
+dad[soft]: ก็อยู่ได้
+kan[vo,soft,wide]: ผมไม่ได้หยุดใช้ชีวิต ผมไม่ได้รอให้วันหนึ่งอะไรบางอย่างย้อนกลับมา ผมแค่ใช้ชีวิตของผมต่อไป
+
+== p2_drive | set=road | tod=night | age=adult | grade=night | music=mystery | amb=night | wear=casual
+cast: kan@900>:car
+kan[vo,soft,cu(kan)]: ผมเคยคิดว่าชีวิตของผมคงเป็นแบบนี้ไปเรื่อย ๆ มีงานให้ทำ มีคนให้เจอ มีบ้านให้กลับ
+kan[vo,soft]: ผมไม่ได้คิดถึงอดีตทุกวัน และไม่ได้พยายามจะกลับไปแก้ไขมันอีกแล้ว จนกระทั่งวันนี้
+cast: kan@700>
+~ 2.4 [wide] walk kan 700>1000
+kan[vo,soft,cu(kan)]: การที่ผมโตขึ้น ไม่อาจทำให้ผมลืมฟิล์มได้ ผมรู้ว่าผมช่วยเธอไม่ได้ ผมจึงอยากมาหาเธอเป็นครั้งสุดท้าย
+kan[soft,whisper]: ครั้งนี้ ครั้งสุดท้ายแล้ว
+~ 2.0 [cu(kan)] silence; distort
+~ 1.6 [title] whiteout
+@sfx whoosh
+
+== p2_other | set=street | tod=day | age=adult | grade=day | music=dream | amb=street | wear=casual
+* เส้นเวลาอีกโลก | 2.6
+cast: kan@900>, film2@1400<
+~ 1.6 [wide] look kan around
+film2[soft]: ขอโทษนะคะ
+~ 1.0 [cu(kan)] turn kan
+film2[worried,cu]: เป็นอะไรหรือเปล่าคะ?
+kan[shock,whisper]: เปล่า
+~ 1.8 [wide] walk film2 1400>200
+kan[vo,soft,cu(kan)]: ครั้งนี้เธอยังมีชีวิต แต่เธอไม่รู้จักผม
+cast: kan@900<, kan2@1700<
+~ 2.2 [wide] walk kan2 1700>1100
+kan[vo,soft]: ชายคนนั้นคือผมเอง ตัวผมในอีกเส้นเวลา
+~ 1.6 [two(kan,kan2)] heartbeat
+kan2[cu]: คุณเป็นใคร?
+~ 1.6 [title] whiteout
+
+== p2_wake | set=bedroom | tod=morning | age=adult | grade=morning | music=dream | amb=morning | wear=casual
+cast: kan@860>:sleep, mom@1500<:offscreen
+~ 1.2 [mcu(kan)] wake kan
+kan[vo,soft]: ห้องนี้คุ้นเคย แต่ก็ไม่คุ้นเคย ของทุกอย่างเป็นของผม แต่ไม่ใช่ของที่ผมจำได้
+mom[shout]: กันต์ ตื่นหรือยังลูก?
+cast: kan@820>, mom@1150<
+mom[smile]: วันนี้ไม่ไปทำงานเหรอลูก?
+kan[soft]: ไปครับ
+kan[vo,soft,cu(kan)]: ไม่มีใครรู้ ไม่มีใครสงสัย เพราะสำหรับทุกคน ผมคือกันต์ของโลกนี้
+kan[vo,soft]: ผมแค่อยากรู้ว่า ถ้าในโลกหนึ่ง ฟิล์มยังมีชีวิตอยู่ ชีวิตของผมจะเป็นอย่างไร
+
+== p2_fonphone | set=bedroom | tod=day | age=adult | grade=day | music=light | amb=room | wear=casual
+cast: kan@820>:phone
+fon[phone]: กันต์ พรุ่งนี้นายมางานแต่งชั้นนะ
+kan[shock]: นี่เธอจะแต่งงานแล้วเหรอ? มีแฟนตอนไหนเนี่ย
+fon[phone]: พูดอะไรของเธอเนี่ย เธอสนิทกับแฟนชั้นจะตาย
+kan: ได้ ๆ เดี๋ยวเราไป
+kan[vo,soft]: ผมเริ่มสงสัยกับโลกที่ผมย้ายมา
+
+== p2_wedding | set=wedding | tod=day | age=adult | grade=warm | music=light | amb=party | wear=formal
+cast: kan@600>, tae@800<, ball@980<, ton@1160<, kong@1340<
+ball: งานแต่งหรือร้านขายป๊อปมาร์ทวะ?
+tae: กูว่าทั้งสองอย่าง
+ball: แล้วอาหารอยู่ไหนวะ?
+ton[tease]: อีกแล้วนะมึง เพิ่งเข้ามาถึงก็ถามหาอาหารแล้ว
+ball: งานแต่งมันต้องมีอาหารดิ
+kan[laugh]: มึงนี่ไม่เปลี่ยนเลยนะ
+cast: kan@600>, tae@800<, ball@980<, ton@1160<, kong@1340<, fon@1560<:bride
+fon[happy]: มาถึงกันแล้วเหรอ?
+tae[tease]: เจ้าสาวมาแล้วจ้า
+fon: อ้อ แล้วมีคนที่อยากแนะนำให้รู้จัก
+cast: kan@600>, tae@800<, ball@980<, ton@1160<, kong@1340<, fon@1560<:bride, film2@1760<
+fon[smile]: นี่ฟิล์ม เพื่อนที่ทำงานของชั้นเอง
+~ 2.0 [cu(kan)] freeze
+@sfx heartbeat
+film2[smile,cu]: สวัสดี
+fon: นี่คือเพื่อนสมัยเรียนของชั้น
+film2[smile]: หวัดดี ทุกคน
+kan[soft,cu]: หวัดดี
+film2[cu]: เราเคยเจอกันหรือเปล่า?
+kan[vo,soft,cu(kan)]: ประโยคเดิม น้ำเสียงเดิม แต่ชีวิตของเธอไม่เหมือนเดิม
+kan[soft]: ไม่น่า
+film2[smile]: แปลกนะ รู้สึกคุ้น ๆ
+fon[laugh]: พวกเธอสองคนอย่าเพิ่งคุยกันยาว สนใจเจ้าสาวบ้าง
+ball[whisper]: สวยมากเลยว่ะ
+tae[whisper]: เออ
+fon[angry]: พวกนายสองคน สนใจเจ้าสาวหน่อย
+ball[shock]: ครับ
+
+== p2_dance | set=wedding | tod=night | age=adult | grade=warm | music=waltz | amb=party | wear=formal
+cast: kan@820>, film2@1100<
+film2: นายไม่เต้นเหรอ?
+kan: ไม่ค่อยเป็นน่ะ
+film2[smile]: เราเหมือนกัน
+kan: งั้นก็ไม่ต้องเต้น
+film2[laugh]: แต่ถ้าไม่เต้น ฝนคงเดินมาลากเราไปแน่
+kan[laugh]: เห็นไหม
+film2[smile]: งั้นไปก็ได้
+~ 2.0 [over] dance kan film2; hug kan film2
+kan[soft]: ถ้าเหยียบเท้า ขอโทษล่วงหน้านะ
+film2[tease]: นี่นายเต้นแย่ขนาดนั้นเลยเหรอ?
+kan[laugh]: ไม่รู้สิ ก็ยังดีที่เป็นเพลงช้า
+~ 1.6 [insert(necklace_on)]
+kan[soft,cu]: สร้อย เธอได้มาจากไหนเหรอ?
+film2[soft]: เส้นนี้เหรอ แปลกมากเลยนะ วันก่อนเราเดินผ่านร้าน แล้วเห็นสร้อยเส้นนี้วางอยู่
+film2[soft]: ทั้งที่ไม่ใช่คนชอบใส่เครื่องประดับ แต่พอเห็นแล้ว มันรู้สึกเหมือนกำลังรอเราอยู่ ก็เลยซื้อมา
+kan[soft]: แล้วทำไมเธอมีอันเดียวล่ะ?
+film2[tease]: ก็เรายังไม่มีแฟนนี่นา
+film2: ทำไมเหรอ? นายมองเหมือนเคยเห็นมันมาก่อนเลย
+kan[smile]: เปล่า แค่รู้สึกว่าสร้อยเหมาะกับเธอมากเลยล่ะ
+film2[smile]: ขอบใจ
+~ 2.0 [over]
+film2[smile]: นายเต้นไม่แย่เลยนะ // unhug kan film2
+kan: แปลว่าผ่าน?
+film2: ผ่าน
+kan[tease]: เราอาจจะเป็นทายาทไมเคิล แจ็กสันแน่เลย {เราอาจจะเป็นทายาท ไมเคิล แจ็กสัน แน่เลย}
+film2[laugh]: บ้า
+~ 1.6 [wide] walk film2 1100>2000
+kan[vo,soft,cu(kan)]: เป็นครั้งแรกที่ผมรู้ว่า ผมไม่ได้แค่ดีใจที่ได้เห็นฟิล์ม ผมอยากรู้จักเธออีกครั้ง
+
+== p2_friends | set=street | tod=night | age=adult | grade=night | music=light | amb=street | wear=formal
+cast: kan@700>, tae@960<, ball@1160<, ton@1360<, kong@1560<
+tae[shout]: ไอ้กันต์
+kan: ว่า?
+tae: ฟิล์มคือใครวะ?
+kan[smile]: กูจะรู้ไหม
+ball[tease]: ไม่รู้แล้วมึงจะยิ้มทำไม
+ton: อิจฉาโว้ย มึงได้เต้นกับฟิล์ม
+kan[tease]: พวกมึงไม่ค่อยทำบุญไง
+tae[tease]: งั้นพรุ่งนี้กูจีบก่อนนะ
+kan[shout]: ไม่ได้เว้ย กูจอง
+tae[shout]: ไอ้กันต์!
+kan[vo,soft,wide]: เป็นเสียงหัวเราะที่ผมไม่ได้หัวเราะแบบนี้มานานแล้ว // laugh kan
+
+== p2_again | set=cafe | tod=day | age=adult | grade=cafe | music=love | amb=cafe | wear=casual
+cast: kan@760>:sit, film2@1160<:sit
+kan[vo,soft,wide]: ผมไม่ได้เล่าเรื่องโลกเดิมให้เธอฟัง ไม่ได้บอกว่าผมรู้จักเธอมาก่อน เพราะในโลกนี้ เธอไม่เคยรู้จักผม
+kan[vo,soft]: ผมจึงเลือกทำสิ่งเดียวที่ทำได้ รู้จักเธอใหม่
+kan[vo,soft,cu(film2)]: ฟิล์มในโลกนี้พูดตรงกว่า ใจเย็นกว่า และมั่นใจในตัวเองมากกว่า // laugh film2
+
+== p2_walkhome | set=street | tod=dusk | age=adult | grade=golden | music=love | amb=street | wear=casual
+cast: kan@700>, film2@960>
+film2: นายกลับทางไหน?
+kan: ทางเดียวกับเธออ่ะ
+film2: จริงเหรอ?
+kan[tease]: ไม่จริง
+film2[laugh]: แล้วเดินตามมาทำไม?
+kan: ก็จะไปส่งไง
+film2[tease]: ใครบอกให้ไปส่ง?
+kan[smile]: อยากไป
+film2[tease]: นี่พยายามจีบเราเหรอ
+kan: ไม่นะ
+film2: ยังไงก่อน?
+film2[soft]: บางทีนายก็ดูเหมือนรู้จักเราอยู่แล้ว แต่บางทีก็เหมือนกำลังพยายามรู้จักเราใหม่
+~ 1.6 [two(kan,film2)] smile film2
+kan[vo,soft,track]: หลายสัปดาห์ผ่านไป เธอชอบนั่งริมหน้าต่างเวลาทำงาน ชอบฟังเพลงตอนขับรถ ไม่ชอบกาแฟหวาน และเวลาหงุดหงิดจะเงียบมาก // walk kan 700>1300; walk film2 960>1560
+film2[smile]: ช่วงนี้นายดูมีความสุขนะ
+kan: จริงเหรอ?
+film2: เพราะอะไร?
+kan[tease]: อาจเพราะช่วงนี้มีเรื่องดี ๆ เข้ามาในชีวิตเยอะขึ้น สงสัยทำบุญมาเยอะ
+~ 1.2 [two(kan,film2)] laugh kan; laugh film2
+
+== p2_dad | set=filmhouse | tod=dusk | age=adult | grade=warm | music=light | amb=street | wear=casual
+cast: kan@700>, film2@960<
+film2: เข้ามาก่อนสิ พ่อเราอยู่บ้าน
+kan[shock]: พ่อเธอ?
+film2[shout]: พ่อ หนูกลับมาแล้ว
+cast: kan@700>, film2@960<, dad@1300<
+dad: กลับมาแล้วเหรอ แล้วนี่ใคร?
+film2: เพื่อนค่ะ
+kan: สวัสดีครับลุง // wai kan
+dad: ชื่ออะไร?
+kan: กันต์ครับ
+dad[shock,cu]: กันต์? เคยเจอกันมาก่อนหรือเปล่า?
+kan[smile]: ไม่น่าครับ
+film2: พ่อ เบา ๆ หน่อย เดี๋ยวเพื่อน ๆ จะไม่มาบ้านหนูอีก
+dad: ก็ถามเฉย ๆ
+film2[tease]: หน้าพ่อไม่เหมือนถามดี ๆ เลย
+dad[cold]: กันต์ นี่หน้าลุงดุไหม?
+kan[shock]: ไม่ ๆ ครับ
+dad: นั่งก่อนสิ ทำงานอะไร?
+kan: ทำงานทั่วไปครับ
+film2: แล้วพ่อ งานที่กรมตำรวจเป็นไง
+dad: ก็ไปได้ด้วยดี
+kan[laugh]: นี่ลุงยังไม่เกษียณเหรอครับเนี่ย
+dad[angry]: ปากดีนะ เดี๋ยวจับเข้าคุกเลย
+kan[shock]: อุ้ย ขอโทษครับ
+dad[soft]: ลุงถามอะไรหน่อย ฟิล์มเป็นคนยังไง?
+kan: เธอ เป็นคนดื้อมากครับ
+dad[laugh]: ลุงก็คิดเหมือนกัน
+film2[angry]: พ่อ!
+kan[soft]: แต่ก็ดีครับ เธอทำให้ชีวิตของผมดูมีชีวิตชีวาขึ้น
+~ 1.6 [cu(dad)] smile dad
+kan: ผมกลับก่อนนะครับลุง
+dad: เดี๋ยว ถ้าคราวหน้าจะมาส่งฟิล์มก็มาทางนี้ จะได้ไม่ต้องจอดรถขวางหน้าบ้าน
+kan[smile]: ครับลุง
+kan[vo,soft,cu(dad)]: พ่อของเธอมองตามผมอยู่ห่าง ๆ เหมือนกำลังพยายามนึกอะไรบางอย่าง แต่สุดท้ายก็ปล่อยผ่าน
+
+== p2_noodle | set=restaurant | tod=night | age=adult | grade=warm | music=love | amb=cafe | wear=casual
+cast: kan@820>:sit, film2@1100<:sit
+film2: นายเป็นอะไร? มองเราอยู่นานแล้วนะ
+kan[smile]: แค่คิดว่าเธอต่างจากที่เราคิดไว้
+film2: แล้วคิดไว้ว่าเราเป็นยังไง?
+kan: ไม่รู้สิ
+film2[tease]: งั้นตอนนี้รู้ยัง?
+kan[soft]: เริ่มรู้แล้ว
+film2: แล้วเป็นไง?
+kan[tease]: ก็น่ารำคาญดี
+~ 1.2 [two(kan,film2)] throw film2; laugh kan
+
+== p2_nightwalk | set=street | tod=night | age=adult | grade=night | music=love | amb=street | wear=casual
+cast: kan@700>, film2@960>
+film2[soft]: นายเคยมีแฟนไหม?
+kan: ก็เคยนะ
+film2: แล้วตอนนี้ล่ะ?
+kan: ไม่มี
+film2: ทำไม?
+kan[soft]: ยังไม่เจอคนที่อยากคบมั้ง
+film2[smile]: อ๋อ
+~ 2.0 [track] walk kan 700>1300; walk film2 960>1560; smile kan; smile film2
+
+== p2_confess | set=park | tod=dusk | age=adult | grade=golden | music=love | amb=park | wear=casual
+cast: kan@760>:sit, film2@1060<:sit
+film2[soft]: กันต์
+kan: หืม?
+film2[shy]: เราชอบเวลาที่อยู่กับนาย
+kan[soft]: เราเองก็เหมือนกัน
+film2[soft,cu]: แล้วนายคิดกับเราแบบไหน?
+kan[vo,soft,cu(kan)]: ความรู้สึกนี้ไม่ได้เกิดจากความทรงจำ ผมชอบเธอเพราะเธอเป็นเธอ
+kan[soft]: เราชอบเธอ
+kan: แล้วเธอล่ะ?
+film2[shy,cu]: เราก็ ชอบเหมือนกัน
+kan[shy]: งั้น เป็นแฟนกันไหม?
+film2[laugh]: ถามจริงจังขนาดนี้เลย?
+kan[smile]: ก็ต้องจริงจังดิ
+film2[smile,cu]: ได้สิ
+kan[happy]: จริงนะ? ห้ามเปลี่ยนใจนะ
+film2[tease]: นายต่างหาก ห้ามเปลี่ยนใจ // hold kan film2
+~ 1.4 [two(kan,film2)] laugh kan; laugh film2
+
+== p2_cheek | set=filmhouse | tod=night | age=adult | grade=night | music=love | amb=night | wear=casual
+cast: kan@760>, film2@1020<
+kan[vo,soft,wide]: ความสัมพันธ์ของเราไม่ได้หวือหวา แต่ลึกขึ้นเรื่อย ๆ เหมือนการอยู่ข้างกันเป็นเรื่องธรรมชาติ
+film2[soft]: กลับดี ๆ นะ
+kan: อืม // turn kan
+film2[soft]: กันต์
+kan: ว่าไง?
+~ 1.4 [two(kan,film2)] kiss film2 kan
+film2[shy]: กลับไปได้แล้ว
+kan[shock]: เดี๋ยว เมื่อกี้…
+film2[tease,cu]: ก็แฟนกันไม่ใช่เหรอ? // exit film2
+kan[smile]: อืม
+kan[shout,happy,wide]: ทำไมกูไม่เจอโลกนี้ให้ไวกว่านี้วะ กูโคตรชอบโลกนี้เลย! // run kan 760>2100
+
+== p2_momgf | set=dining | tod=night | age=adult | grade=warm | music=light | amb=room | wear=casual
+cast: kan@820>:sit, mom@1150<
+mom: ช่วงนี้กลับบ้านดึกบ่อยจังนะ
+kan[smile]: ไปหาแฟนครับ
+mom[shock]: แฟน? มีแฟนตั้งแต่เมื่อไหร่เนี่ย?
+kan[shy]: ก็ สักพักนึงแล้วครับ
+mom[smile]: แล้วทำไมไม่พามาให้แม่รู้จัก?
+kan[laugh]: เดี๋ยวพามาแน่นอนครับ
+mom[soft,cu]: ลูกดูมีความสุขขึ้นนะ แม่ชอบ
+
+== p2_fading | set=bedroom | tod=night | age=adult | grade=lonely | music=mystery | amb=night | wear=casual
+cast: kan@860>:sit
+kan[vo,soft,mcu(kan)]: คืนนั้นผมปวดหัวเล็กน้อย ผมเริ่มจำอดีตของโลกเดิมไม่ค่อยได้ แต่ผมคิดว่ามันไม่สำคัญหรอก
+~ 2.0 [insert(memory_fade)]
+kan[vo,soft]: เสียงของเพื่อนในโลกเดิมเริ่มเบาลง ทุกคนเริ่มกลายเป็นเพียงภาพเลือน ๆ
+@sfx ring
+film2[phone]: อยู่ไหน?
+kan[smile]: บ้าน
+film2[phone]: มาหาเราหน่อย
+kan: ทำไม?
+film2[phone,soft]: อยากเจอ
+kan[laugh]: ก็ได้
+kan[vo,soft,cu(kan)]: โลกใหม่กำลังกลายเป็นชีวิตจริงของผม แต่มันก็เหมือนจะกลืนกินความทรงจำของผมไปทีละน้อย
+
+== p2_beach | set=beach | tod=day | age=adult | grade=day | music=love | amb=sea | wear=casual
+cast: kan@760>, film2@1020>, tae@-200>, ball@-400>, ton@-600>, kong@-800>, fon@-1000>
+kan[vo,soft,wide]: หลายวันต่อมา ผมพาฟิล์มกับเพื่อน ๆ ไปเที่ยวทะเล ระหว่างทางเต็มไปด้วยเสียงหัวเราะ
+cast: kan@760>, film2@1020>
+~ 2.0 [track] walk kan 760>1060; walk film2 1020>1320
+film2: วันนี้นายเงียบจัง กำลังคิดอะไรอยู่?
+kan: ไม่รู้เหมือนกัน
+film2[laugh]: ตอบเหมือนคนไม่อยากตอบเลยอ่ะ
+film2[soft]: เราชอบที่นี่นะ มันทำให้รู้สึกว่าไม่ต้องรีบไปไหน
+kan[soft]: เราเองก็ชอบ เพราะตอนนี้ไม่มีอะไรต้องรีบ
+cast: kan@1060>:sit, film2@1300<:sit
+film2[soft,cu]: กันต์ นายมีความสุขไหม?
+kan[soft]: มี
+film2[smile]: มากไหม?
+kan[smile,cu]: มาก
+film2[soft]: งั้นก็ดี
+~ 2.2 [over] kiss film2 kan
+
+== p2_sunset | set=beach | tod=golden | age=adult | grade=golden | music=love | amb=sea | wear=casual
+cast: kan@860>:sit, film2@1120<:sit
+film2[soft]: สวยไหม?
+kan[soft]: สวย
+film2[tease]: หมายถึงทะเล
+kan[tease]: เราก็หมายถึงทะเล
+film2[soft]: รู้ไหม เรารู้สึกแปลก ๆ เวลาที่อยู่กับนาย เหมือนเรารู้จักกันมานานมากแล้ว
+kan[soft]: บางทีเราอาจจะเข้ากันได้ดีก็ได้
+film2[soft]: บางครั้งเรารู้สึกเหมือนกำลังคิดถึงอะไรบางอย่าง ทั้งที่ไม่รู้ด้วยซ้ำว่ามันคืออะไร
+film2: นายเคยคิดไหม ถ้าเราได้เจอกันเร็วกว่านี้ ชีวิตเราจะเป็นยังไง?
+kan[soft]: เคยสิ แต่การที่เราได้เจอกันตอนนี้ก็ดีแล้วนะ
+film2: ทำไมล่ะ?
+kan[soft]: เพราะถ้าเจอกันเร็วกว่านี้ เราอาจจะยังไม่ใช่คนแบบที่เธอรู้จักตอนนี้ก็ได้
+film2[smile]: ฟังดูเป็นคำตอบที่ดีนะ
+kan[tease]: แน่นอน เราคิดตั้งนาน
+film2[laugh]: หลงตัวเองเหมือนเดิมเลย
+film2[smile]: เก็บไว้ไหม? ถือว่าเป็นของที่ระลึกจากวันนี้ // give film2 kan shell
+kan[soft]: ขอบใจนะ
+film2: กลับกันเถอะ เดี๋ยวมืด
+kan[vo,soft,wide]: บางครั้งความสุขก็ไม่ได้หมายถึงการได้ทุกอย่างกลับคืนมา แต่อาจเป็นเพียงการได้เดินอยู่ข้างใครสักคนอีกครั้ง โดยไม่ต้องรีบกล่าวลา
+
+== p2_stars | set=beach | tod=night | age=adult | grade=night | music=love | amb=sea | wear=casual
+cast: kan@860>:sit, film2@1120<:sit
+film2[happy]: กันต์ มาดูนี่สิ
+kan: อะไร?
+film2: ดาวไง นายไม่เห็นเหรอ?
+kan[tease]: เห็นแล้วครับ
+film2[laugh]: กวนประสาท
+film2[soft,insert(gemini)]: ตรงนั้นน่าจะเป็นกลุ่มดาวคนคู่ เจมินาย {ตรงนั้นน่าจะเป็นกลุ่มดาวคนคู่ เจมิไน}
+kan[soft]: กลุ่มดาวคนคู่?
+film2[soft]: อืม เราชอบกลุ่มดาวนี้นะ เพราะมันเหมือนมีใครสักคนอยู่ข้าง ๆ กันตลอดเวลา
+kan[soft]: แล้วถ้าวันหนึ่ง ดาวสองดวงนั้นไม่ได้อยู่ข้างกันแล้วล่ะ?
+film2[soft]: ทำไมถึงถามแบบนั้น?
+kan: ก็แค่สงสัย
+film2[soft,cu]: เราว่าต่อให้เราไม่ได้อยู่ข้างกันตลอดเวลา ก็ไม่ได้แปลว่าเราจะลืมกันหรอก
+film2[shy]: นายมองเราตั้งนานแล้วนะ
+kan[soft]: ก็แค่อยากมอง
+film2[shy]: พูดอะไรของนายเนี่ย
+kan[soft,cu]: พูดความจริง
+~ 2.4 [over] kiss kan film2
+film2[soft]: นี่เราเพิ่งรู้จักกันไม่นานเองนะ ทำไมถึงรู้สึกเหมือนรู้จักนายมานานขนาดนี้ก็ไม่รู้
+kan[soft]: บางทีเราอาจต้องใช้เวลาทำความรู้จักกันอีกเยอะเลยก็ได้
+film2[smile]: งั้นก็อย่าเพิ่งรีบไปไหนล่ะ // hold film2 kan
+kan[soft,cu]: เราจะอยู่ตรงนี้
+
+== p2_morning | set=bedroom | tod=morning | age=adult | grade=morning | music=love | amb=sea | wear=casual | resort=1
+cast: kan@760>:sit, film2@1060<:sit
+film2[smile]: มองอะไรแต่เช้า?
+kan[smile]: เปล่า
+film2[tease]: โกหกอีกแล้ว // hold film2 kan
+kan[vo,soft,wide]: ในโลกที่ผมไม่รู้ว่าจะมีเวลาเหลืออีกนานแค่ไหน อย่างน้อยตอนนี้ ฟิล์มก็ยังอยู่ตรงนี้
+
+== p2_lastmem | set=bedroom | tod=night | age=adult | grade=lonely | music=sad | amb=night | wear=casual
+cast: kan@860>:sit
+kan[vo,soft,mcu(kan)]: ผมพยายามนึกถึงโลกเดิม แต่ครั้งนี้ไม่มีภาพกลับมา ผมจำได้เพียงว่าเคยมีโลกอีกใบ เคยมีฟิล์มอีกคน และเคยเสียเธอไป
+kan[vo,soft]: การอยู่ในอีกเส้นเวลา กำลังลบความทรงจำของผม จนอาจลบตัวตนของผมไปด้วย
+kan[sad,whisper]: นี่กำลังเกิดขึ้นจริง ๆ สินะ
+~ 2.0 [insert(phone_home)]
+kan[vo,soft,cu(kan)]: ผมต้องเลือก ระหว่างอยู่กับฟิล์มที่นี่จนกว่าผมจะหายไป หรือกลับไปโลกเดิม โลกที่ไม่มีเธอ
+
+== p2_choice | set=road | tod=night | age=adult | grade=night | music=mystery | amb=night | wear=casual
+cast: kan@900>
+~ 2.0 [wide] stand kan
+kan[soft,whisper]: ถ้ากลับไป เราก็จะกลับไปเป็นเราในโลกเดิม
+kan[sad]: แต่ถ้าอยู่ที่นี่ เราก็จะลืมทุกอย่าง
+~ 2.0 [wide] portal
+cast: kan@900>, film@1400<:ghost
+kan[vo,soft,cu(film)]: ผมเห็นโลกเดิม เห็นแม่ เห็นเพื่อน และเห็นฟิล์ม ฟิล์มในโลกเดิม คนที่ผมเคยเสียไป
+kan[cry]: เรากลับไปได้ // walk kan 900>1100
+~ 2.0 [insert(memory_beach)]
+kan[cry,whisper]: ไม่
+kan[cry]: เราไปไม่ได้
+kan[cry]: ขอโทษ เราอยากกลับไปหาเธอนะ แต่เราทิ้งฟิล์มคนนี้ไม่ได้
+~ 2.0 [wide] fade film
+kan[vo,soft,cu(kan)]: ไม่ว่าเธอจะเป็นฟิล์มจากโลกไหน ผมก็รักเธอ
+
+== p2_truth | set=park | tod=dusk | age=adult | grade=golden | music=sad | amb=park | wear=casual
+cast: kan@760>:sit, film2@1060<:sit
+kan: ฟิล์ม
+film2: หืม?
+kan[soft]: ถ้าเราบอกอะไรบางอย่าง เธอจะเชื่อเราไหม?
+film2: ต้องดูก่อนว่าเรื่องอะไร
+kan[soft,cu]: เราไม่ได้มาจากโลกนี้
+film2[worried]: หมายความว่าไง?
+kan[soft]: ในโลกที่เรามา เราเคยรู้จักกัน สนิทกันมากเลยล่ะ
+film2[worried]: แล้วมันเกิดอะไรขึ้น?
+kan[sad,cu]: เธอไม่อยู่แล้ว
+kan[soft]: เราไม่ได้กลับมาเพื่อเปลี่ยนสิ่งที่เกิดขึ้นแล้ว เราแค่อยากเจอเธออีกครั้งนึง
+film2[soft]: แล้วตอนนี้ล่ะ?
+kan[sad]: ตอนนี้ เรากำลังจะลืมทุกอย่างไป ยิ่งอยู่ที่นี่นานเท่าไหร่ โลกนั้นก็ยิ่งหายไป
+film2[sad]: แล้ววันหนึ่งนายจะลืมเราไหม? ฟิล์มคนนี้ไม่ใช่คนที่นายเคยรู้จัก
+kan[soft,cu]: แต่เธอคือคนที่เรารักตอนนี้
+film2[smile,cu]: งั้นเราก็ไม่กลัว // hold film2 kan
+
+== p2_choose | set=courtyard | tod=dusk | age=adult | grade=golden | music=sad | amb=park | wear=casual
+cast: kan@760>:sit, film2@1060<:sit
+film2[soft]: ถ้านายกลับไปแล้ว นายจะลืมเราไหม?
+kan[sad]: ไม่รู้สิ
+film2: แล้วถ้าอยู่ที่นี่?
+kan[sad]: เราจะลืมว่าเคยมีโลกนั้น
+film2[soft]: งั้นนายกำลังเสียทั้งสองอย่างเลย
+kan[laugh,sad]: ใช่
+film2[soft]: แล้วนายอยากเลือกอะไร?
+kan[sad]: เราไม่รู้
+film2[soft,cu]: งั้นครั้งนี้ ให้เราเลือกด้วยได้ไหม?
+kan: เลือกอะไร?
+film2[soft]: เลือกว่าจะอยู่หรือกลับ
+kan: แล้วเธอเลือกอะไร?
+film2[smile,cu]: เราอยากไปกับนาย
+
+== p2_go | set=road | tod=night | age=adult | grade=night | music=mystery | amb=night | wear=casual
+cast: kan@860>, film2@1180<
+kan[worried]: เธอมาทำไม?
+film2[soft]: มาส่ง
+kan: ถ้าเรากลับไป เราอาจไม่ได้เจอกันอีก
+film2[smile]: รู้น่า
+kan: แล้วเธอยังจะมาอีก?
+film2[soft]: ก็เราอยากมาอ่ะ นายเคยบอกว่าโลกนั้นนายเคยเสียเราไป
+film2[soft,cu]: งั้นครั้งนี้ เราจะไม่ปล่อยให้นายกลับไปคนเดียวหรอก
+kan[vo,soft,cu(kan)]: ความทรงจำของผมลดน้อยลงเรื่อย ๆ แม้แต่หน้าของเธอ ผมยังจำได้ลาง ๆ
+kan[soft]: ขอบคุณนะ
+film2: เรื่องอะไร?
+kan[soft]: ทุกอย่างเลย
+film2[laugh]: พูดเหมือนจะไม่เจอกันอีก
+kan[soft]: ก็ไม่แน่
+film2[soft,cu]: งั้นถ้าเจอกันอีก รีบมาหาเรานะ
+kan[smile]: ได้อยู่แล้ว
+~ 2.0 [wide] portal; walk kan 860>1300
+kan[shout,shock]: ฟิล์ม! // run film2 1180>1320
+~ 1.6 [title] whiteout
+@sfx whoosh
+
+== p2_school | set=gate | tod=morning | age=adult | grade=morning | music=dream | amb=school | wear=casual
+cast: kan@560>, film2@800<
+film2[soft]: ที่นี่…
+kan[soft]: โรงเรียนของเราและเธอ วันแรกที่พวกเราเจอกัน
+cast: kan@560>, film2@800<, kanyoung@-200>:bike:young, filmyoung@2000<:read:young
+~ 2.4 [wide] ride kanyoung -200>1300; walk filmyoung 2000>1480
+kan[shock]: นั่น…
+film2[soft]: นั่นเราเหรอ…
+kan[smile]: อืม แล้วนั่นก็คือเรา
+film2[laugh]: สมัยก่อน นายเป็นเด็กแว้นเหรอเนี่ย
+kan[shock]: เดี๋ยวนะ วันนั้นเธอก็พูดแบบนี้
+~ 1.0 [wide] crash
+@sfx crash
+kanyoung[shout]: เฮ้ย! ขอโทษ เป็นอะไรไหม? // stand kanyoung 1300
+filmyoung[angry]: นายขี่จักรยานหรือขี่รถถัง? // getup filmyoung
+~ 1.4 [two(kan,film2)] laugh film2
+~ 2.6 [insert(memories_all)]
+film2[cry]: กันต์… // hug film2 kan
+kan[worried]: เป็นอะไร ฟิล์ม?
+film2[cry,cu]: เราจำได้แล้ว
+kan[shock]: จำได้ อะไร?
+film2[cry]: เราเคยเจอกันที่นี่ ไม่ใช่แค่โลกนี้ // unhug film2 kan
+film2[cry]: เราจำวันที่เราเจอกันได้ จำวันที่เราเป็นบัดดี้กันได้ จำตอนที่นายให้ดอกไม้เราได้
+film2[cry,smile,cu]: เราจำตอนที่นายขอเราเป็นแฟนได้
+kan[cry,laugh]: เธอ จำได้?
+film2[cry,smile]: จำได้สิ เราจำได้ทุกอย่าง
+film2[soft]: นายรู้ไหม ว่าเราคิดถึงนายแค่ไหน
+film2[sad]: ตอนที่อยู่โลกนั้น เรารู้สึกเหมือนอยู่กับคนที่เรารัก แต่ก็รู้สึกเหมือนกำลังทำให้นายเสียคนที่นายรักไปอีกคน
+kan[soft]: ไม่เป็นไรหรอก เราเลือกเธอ
+kan[soft,cu]: ไม่ว่าเธอจะเป็นฟิล์มของโลกไหน เธอก็คือเธอ
+film2[cry,smile]: งั้น ขอกอดได้ไหม?
+~ 2.4 [over] hug kan film2
+film2[smile]: กันต์
+kan: ครับ?
+film2[tease]: เราจำได้อีกอย่างหนึ่ง วันนั้น เรายังไม่ได้จูบนาย
+kan[shock]: หา?
+film2[laugh]: ก็ในโลกของเราไง
+~ 2.2 [over] kiss film2 kan
+film2[smile,cu]: คราวนี้จำไว้ด้วยนะ
+kan[laugh]: จำแน่นอน
+~ 1.6 [wide] distort
+kan[worried]: มันเริ่มแล้ว
+film2[soft]: อืม ขอให้พวกเราได้เจอกันอีกนะ // hold film2 kan
+film2[soft,cu]: ครั้งนี้ อย่าปล่อยมือเรา
+kan[smile,cu]: ไม่ปล่อย
+~ 1.8 [title] whiteout
+@sfx whoosh
+
+== p2_return | set=road | tod=day | age=adult | grade=day | music=sad | amb=street | wear=casual
+* โลกเดิม | 2.4
+cast: kan@960>
+~ 2.0 [wide] look kan around
+kan[vo,soft,cu(kan)]: ผมกลับมายังโลกเดิม ความทรงจำทุกอย่างกลับมา แต่ไม่มีฟิล์ม
+kan[sad,whisper]: ฟิล์ม…
+~ 2.0 [wide] walk kan 960>1400
+film2[soft]: กันต์
+~ 1.6 [cu(kan)] turn kan
+cast: kan@1400<, film2@900>
+~ 2.0 [wide] walk film2 900>1180
+kan[cry,smile,cu]: เธอ…
+kan[vo,soft]: ครั้งนี้ผมไม่ต้องถามว่าเธอเป็นใคร เพราะผมรู้แล้ว
+
+== p2_merge | set=road | tod=dusk | age=adult | grade=golden | music=hope | amb=street | wear=casual
+cast: kan@1100<, film2@860>
+~ 2.0 [wide] merge
+film2[worried]: เกิดอะไรขึ้น กันต์
+kan[shock]: เส้นเวลา ของพวกเรา รวมกัน
+kan[soft]: มันไม่ได้พาเราแยกจากกัน มันกำลังพาเรามาอยู่ที่เดียวกัน
+kan[cry,laugh,cu]: ฟิล์ม เราอยู่โลกเดียวกันแล้ว
+kan[smile]: งั้นครั้งนี้ เราไม่ต้องเสียเธอไปแล้ว
+~ 2.6 [over] hug kan film2
+
+== p2_home | set=house | tod=dusk | age=adult | grade=warm | music=hope | amb=street | wear=casual
+cast: kan@760>, film2@960>, mom@1300<
+mom[happy]: กันต์ กลับมาแล้วเหรอ?
+mom[shock]: นี่ใคร?
+kan[smile]: แฟนไงครับแม่ ที่บอกว่าเดี๋ยวจะพามา
+film2[smile]: สวัสดีค่ะ // wai film2
+~ 1.4 [cu(mom)] smile mom
+mom[soft]: เข้าบ้านก่อนลูก
+
+== p2_ordinary | set=street | tod=dusk | age=adult | grade=golden | music=hope | amb=street | wear=casual
+cast: kan@700>, film2@960>
+film2: วันนี้กินอะไรดี?
+kan: อะไรก็ได้
+film2[tease]: ตอบแบบนี้ตลอดเลยนะ
+kan: แล้วเธออยากกินอะไร?
+film2: ไม่รู้
+kan[smile]: งั้นเดินไปเรื่อย ๆ
+film2[laugh]: โอเค // hold film2 kan
+~ 2.4 [track] walk kan 700>1500; walk film2 960>1760
+
+* หลายปีต่อมา | 3.0
+
+== p2_baby | set=livingroom | tod=day | age=adult | grade=warm | music=light | amb=room | wear=casual
+cast: kan@820>:sit, film2@1100<:sit:test
+film2[happy,shout]: กันต์! ดูสิ
+~ 1.4 [insert(pregnancy_test)]
+kan[shock]: นี่ คือ…
+kan[shock,cu]: จริงเหรอ?
+film2[smile,cu]: อืม
+kan[happy]: เรากำลังจะมีลูกเหรอ?
+film2[cry,smile]: อืม // hold kan film2
+kan[soft]: ไม่คิดเลยว่าเราจะมาถึงตรงนี้
+film2: ทำไม?
+kan[soft]: เมื่อก่อนเราเคยคิดว่า แค่ได้มีเธออยู่ด้วยอีกวันก็คงพอแล้ว
+film2[smile]: แล้วตอนนี้ล่ะ?
+kan[smile,cu]: ตอนนี้เรามีอีกคนที่ต้องอยู่ด้วยแล้ว
+film2[laugh]: นายเริ่มพูดเหมือนพ่อคนแล้วนะ
+kan[laugh]: ก็ใกล้แล้วนี่
+
+== p2_kick | set=bedroom | tod=night | age=adult | grade=warm | music=love | amb=night | wear=casual
+cast: kan@800>:sit, film2@1060<:sit:pregnant
+kan[soft]: ดิ้นไหม?
+film2[smile]: เมื่อกี้
+kan[happy]: จริงเหรอ?
+film2: อืม
+kan[smile]: ลูกคงรู้ว่าพ่ออยู่ตรงนี้
+film2[laugh]: เข้าข้างตัวเองอีกแล้ว
+kan[tease]: ก็ต้องอย่างนั้นสิ
+kan[soft]: รู้ไหม เมื่อก่อนเราเคยคิดว่า ถ้าย้อนเวลากลับไปได้ เราจะเปลี่ยนทุกอย่าง
+film2[soft]: แล้วตอนนี้ล่ะ?
+kan[smile,cu]: ตอนนี้เราไม่อยากเปลี่ยนอะไรแล้ว
+film2[smile]: ดีแล้ว // hold film2 kan
+kan[soft]: เพราะถ้าเราเปลี่ยนอะไรสักอย่าง เราอาจไม่ได้เจอเขา
+film2[laugh,cu]: ลูกเราเนี่ยนะ?
+kan[smile]: อืม
+
+== p2_end | set=garden | tod=golden | age=adult | grade=golden | music=finale | amb=park | wear=casual
+cast: kan@700>, film2@960>, child@1400<
+~ 3.0 [wide] play child
+kan[vo,soft,insert(memories_all)]: ตั้งแต่วันที่ผมขี่จักรยานชนเธอ วันที่ได้เป็นบัดดี้กัน วันที่ตกหลุมรัก วันที่สูญเสียเธอ และวันที่ได้กลับมาพบกันอีกครั้ง
+kan[vo,soft,cu(kan)]: เมื่อก่อน ผมคิดมาตลอดว่า ถ้าผมมีเวลาอีกสักวัน ผมคงเปลี่ยนทุกอย่างได้
+kan[vo,soft]: แต่ตอนนี้ผมเข้าใจแล้วว่า ต่อให้ย้อนเวลากลับไปได้เป็นร้อยครั้ง ก็ไม่มีอะไรสำคัญไปกว่าการได้ใช้ชีวิตอยู่กับคนที่เรารัก
+kan[vo,soft,two(kan,film2)]: ผมเคยขอเวลาเพิ่มอีกหนึ่งวัน เพื่อบอกลาเธอ // hold film2 kan
+kan[vo,soft]: แต่สุดท้าย เวลาให้สิ่งที่มีค่ากับผมมากกว่านั้น
+kan[vo,soft,over]: มันให้โอกาสผม ได้ใช้ทุกวันที่เหลืออยู่กับเธอ // hug kan film2
+~ 6.0 [title] endtitle
+~ 12.0 [title] credits

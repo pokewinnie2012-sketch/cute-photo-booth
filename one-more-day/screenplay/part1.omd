@@ -1,0 +1,749 @@
+# ONE MORE DAY — แค่วันเดียวกับเธอ
+# ดัดแปลงจากนิยายของ ภูมินริศร์ โชติพงศ์ (Sawasdeekap)
+
+== p1_open | set=road | tod=night | wx=rain | age=teen | grade=dream | music=dream | amb=rain
+cast: kan@820/1.15>, film@1180/0.55>
+~ 2.5 [wide] dreamwalk
+???[vo]: นายยังจะพยายามอีกงั้นเหรอ?
+~ 1.4 [cu(kan)] look kan back
+~ 2.2 [insert(memories)]
+kan[shout,back]: ฟิล์ม!!! // run kan 820>1100; drift film 1180>1500
+~ 1.6 [wide] run kan 1100>1250; drift film 1500>1800
+~ 1.2 [wide] headlights
+@sfx horn
+
+== p1_wake | set=bedroom | tod=morning | age=teen | grade=morning | music=none | amb=morning
+cast: kan@860/1.0>:sleep, mom@1500<:offscreen
+~ 1.2 [wide] alarm
+mom[shout]: กันต์! ตื่นได้แล้วลูก! // wake kan
+mom[shout]: วันนี้เปิดเทอมวันแรกนะ!
+kan[vo,soft,mcu(kan)]: ผมฝันถึงผู้หญิงคนหนึ่งซ้ำ ๆ แต่ทุกครั้งที่ตื่น ผมจำหน้าเธอไม่ได้
+kan[vo,soft]: จำได้แค่เสียงหัวเราะ ถนน และความรู้สึกว่า กำลังจะเสียใครบางคนไป
+kan[vo,soft,cu(kan)]: ที่น่ากลัวคือ ในฝันผมพยายามวิ่งไปหาเธอทุกครั้ง แต่ไม่เคยทัน
+~ 4.5 [title] maintitle
+
+== p1_house | set=house | tod=morning | age=teen | grade=morning | music=light | amb=street
+cast: kan@760>:bike, mom@420>
+mom[shout]: หมวกกันน็อก!
+kan[shout]: รู้แล้วน่าแม่!
+mom: เมื่อวานก็พูดแบบนี้!
+kan: วันนี้ใส่จริง! // helmet kan
+~ 1.6 [wide] ride kan 760>2100
+cast: kan@600>:bike, tae@1100<:bike
+tae: ช้าอีกแล้วนะมึงอ่ะ
+kan: แม่กูบ่น
+tae: เรื่องเมื่อคืนเหรอ?
+kan: ทุกเรื่องแหละ ไม่รู้เป็นอะไร
+tae[tease]: เขาถึงเป็นแม่มึงไง
+~ 2.0 [wide] ride kan 600>2000; ride tae 1100>2300; ride ball -200>1500; ride ton -400>1300; ride kong -600>1100
+
+== p1_crash | set=gate | tod=morning | age=teen | grade=morning | music=light | amb=school
+cast: kan@-100>:bike, tae@-420>:bike, film@1500<:read
+~ 2.2 [wide] ride kan -100>840; ride tae -420>520; walk film 1500>1020
+kan[shout,shock]: เฮ้ย!
+~ 1.0 [two(kan,film)] crash
+@sfx crash
+kan[worried]: ขอโทษ! เป็นอะไรไหม? // stand kan 860
+film[angry]: คงไม่เป็นไรมั้ง นี่นายขี่จักรยานหรือขี่รถถังเนี่ย? // getup film
+~ 0.8 [mcu(tae)] laugh tae
+kan[vo,soft,cu(film)]: เสียงของเธอ เหมือนในความฝันของผมเหลือเกิน // slowmo
+film[cu]: มีอะไรรึเปล่า?
+kan[shy]: เปล่า…
+film[angry]: งั้นเข้าเรื่องเลย ตานายบอดรึไง ขับอย่างกะรถถัง
+kan[tease]: ถ้าเป็นรถถังนะ เธอแบนตายแล้ว
+film[angry]: นายนี่!
+kan: เธอเองรึเปล่าที่ไม่ดูทาง จะมาโทษเราคนเดียวไม่ได้นะ
+~ 1.6 [two(kan,film)] glare film
+
+== p1_lunch | set=classroom | tod=day | age=teen | grade=day | music=light | amb=school
+cast: film@820>:tidy, fon@1260<
+fon[shout]: ฟิล์ม! ไปกินข้าวกัน
+film: เดี๋ยว ขอเก็บของก่อน
+fon: เธอนี่นะ เรียนเสร็จแล้วก็ยังจะจัดโต๊ะอีก
+film: มันรก
+fon[laugh]: นี่เรียกรก? หนังสือสองเล่มเนี่ยนะ
+film: สำหรับเรา รก
+fon[laugh]: เออ ๆ ไปได้แล้ว เดี๋ยวโรงอาหารไม่มีที่นั่ง
+
+== p1_hall | set=hall | tod=day | age=teen | grade=day | music=none | amb=hall
+cast: ball@560>:sit, kan@820>:sit, tae@1080>:sit, ton@1340>:sit, kong@1600>:sit
+pa[wide]: นักเรียนชั้นมัธยมศึกษาปีที่สี่ทุกคน กรุณามารวมตัวที่หอประชุม เพื่อฟังรายละเอียดกิจกรรมบัดดี้
+ball: บัดดี้คืออะไรวะ?
+ton: จับคู่ช่วยกันมั้ง
+tae[tease]: มึงขอให้ได้คู่สวย ๆ ใช่มั้ยล่ะ
+kan: กูขอให้ได้คนที่ไม่พูดมากแบบมึงก็พอ
+tae: อ้าว
+teacher[wide]: กันต์ ห้อง 4/1 คู่กับ ฟิล์ม ห้อง 4/3 {กันต์ ห้องสี่ทับหนึ่ง คู่กับ ฟิล์ม ห้องสี่ทับสาม}
+kan[shock,cu]: อะไรนะ?
+tae[laugh]: คนขี่รถถังนี่หว่า!
+@music light
+
+== p1_buddy | set=courtyard | tod=day | age=teen | grade=day | music=light | amb=school
+cast: kan@760>, film@1160<
+kan: เธอคือบัดดี้เราเหรอ?
+film: น่าจะใช่
+kan: ขอเปลี่ยนได้ไหม?
+film: เราก็อยากขอเหมือนกัน
+kan: งั้นไปบอกครู
+film: นายไปสิ
+kan: ทำไมเราต้องไป?
+film: นายเป็นคนอยากเปลี่ยน
+kan: เธอก็อยากเปลี่ยนเหมือนกัน
+film[tease]: แต่เราไม่ได้เป็นคนขอ
+kan[tired]: โอเค อยู่ก็อยู่
+film[smile]: ก็ดี
+
+== p1_map | set=courtyard | tod=day | age=teen | grade=day | music=light | amb=school
+cast: kan@820>:paper, film@1080<:pen
+film: ตรงนี้ห้องอะไร?
+kan: ห้องสมุดไง เธอไม่รู้ได้ไง
+film: แล้วทำไมนายวาดห้องสมุดอยู่ด้านหลัง?
+kan[shy]: เออ ผิดจริงว่ะ
+film[tease]: เก่งแต่ปาก
+kan: เธอก็ไม่ได้เก่งกว่าเรามากหรอก
+film[tease]: อย่างน้อยเราไม่วาดแผนที่กลับหัว
+kan: มันไม่ได้กลับหัว
+film: งั้นอ่านให้ฟังสิ
+~ 1.0 [cu(kan)]
+kan[shy]: ไม่อ่าน
+
+== p1_papers | set=corridor | tod=day | age=teen | grade=day | music=light | amb=school
+cast: kan@760>, film@1100<:carry
+film: ถือให้หน่อย // give film kan papers
+kan: ทำไมเรา?
+film: ก็เป็นบัดดี้กัน
+kan: เมื่อวานยังอยากเปลี่ยนคู่อยู่เลย
+film[tease]: วันนี้ก็ยังอยาก
+kan[angry]: เธอนี่กวนจริง
+film[smile]: เพิ่งรู้เหรอ? // walk film 1100>2200
+kan[tired]: เราเกลียดระบบนี้จริง ๆ
+
+== p1_bet | set=pavilion | tod=day | age=teen | grade=day | music=light | amb=school
+cast: kan@640>:sit:papers, tae@920<:sit, ball@1160<:sit, ton@1380<:sit, kong@1600<:sit
+tae[tease]: เป็นไง บัดดี้?
+kan: ไม่ต้องถาม
+ball: กูว่าคู่นี้อยู่ด้วยกันเกินเดือนไม่ได้
+ton: กูให้สองอาทิตย์
+kong[calm]: หนึ่งอาทิตย์
+kan[angry]: พวกมึงช่วยให้กำลังใจกูหน่อยได้ไหม?
+tae[laugh]: กำลังใจมาแล้วไง พวกกูพนันกันอยู่
+
+== p1_lab | set=lab | tod=dusk | age=teen | grade=lab | music=tension | amb=room
+cast: kan@820>:bench, film@1120<:bench
+film: เราบอกแล้วไงว่าต้องทำตามขั้นตอนในใบงานก่อน
+kan[angry]: ก็รู้แล้วน่า ไม่ต้องอ่านให้ฟังทุกบรรทัดก็ได้
+film[angry]: ถ้ารู้จริง ทำไมถึงยังทำผิดอยู่ล่ะ?
+kan[angry]: เธอนี่จะหาเรื่องเราทุกครั้งเลยหรือไง? น่ารำคาญจริง ๆ
+film[angry]: นายต่างหากที่ไม่ยอมฟังใคร
+kan[angry]: งั้นก็ทำเองเลย
+film[angry]: ได้ เราทำเองก็ได้!
+~ 1.2 [two(kan,film)] spill
+@sfx glass
+film[shout]: เพราะนายเลย!
+kan[shout]: อ้าว! ก็เธอเป็นคนขยับโต๊ะเองไม่ใช่เหรอ?
+teacher[shout,wide]: พอได้แล้ว! // enter teacher 300
+teacher[angry]: ครูให้พวกเธอมาทำงานเป็นคู่ ไม่ใช่ให้มาแข่งกันว่าใครถูกใครผิด
+teacher[angry]: ทำใหม่ตั้งแต่ต้น เสร็จเมื่อไหร่ค่อยกลับบ้าน
+kan[sad]: ครับ
+film[sad]: ค่ะ // exit teacher
+~ 2.4 [wide] timepass
+kan[soft]: อันนี้ต้องทิ้งไหม?
+film[soft]: ไม่ต้อง วางไว้ตรงถาดนั้นก่อน
+kan[soft]: โอเค
+film[soft]: กันต์
+kan: หืม?
+film[shy]: เมื่อกี้เราพูดแรงไปหน่อย
+kan[soft]: เราเองก็เหมือนกัน
+film[smile]: งั้นก็หายกันนะ
+kan[smile]: อืม หายกัน // shake kan film
+film[smile]: คราวหน้าก็ช่วยฟังกันบ้าง
+kan[tease]: ครับ คุณครูฟิล์ม
+film[angry,laugh]: กันต์! // laugh kan; laugh film
+
+== p1_stars | set=lab | tod=night | age=teen | grade=night | music=love | amb=night
+cast: kan@1180>, film@860>
+kan: นี่อะไร?
+film: กล้องโทรทรรศน์ของชมรมดาราศาสตร์มั้ง ครูเคยบอกว่าห้ามย้ายออกจากห้อง
+kan: เคยดูดาวผ่านของจริงไหม?
+film: เคยดูแต่รูป
+kan[smile]: งั้นลองดูไหม?
+~ 1.6 [two(kan,film)] scope kan
+kan[happy]: เจอแล้ว! ลองดูสิ
+~ 1.4 [insert(telescope)]
+film[soft]: สวยจัง // scope film
+kan[pov,tease]: ดาวมันก็มีแค่นั้นเองไม่ใช่เหรอ?
+film: นายอย่าเพิ่งพูดได้ไหม เรากำลังดูอยู่
+film[soft,insert(gemini)]: นั่นกลุ่มดาวคนคู่ เจมินาย {นั่นกลุ่มดาวคนคู่ เจมิไน}
+kan: แปลว่ามีสองคนอยู่ด้วยกันตลอดเลยเหรอ?
+film[smile]: ไม่ได้แปลแบบนั้นตรง ๆ หรอก แต่เราชอบที่มันมีดาวสองดวงอยู่ข้างกัน // unscope film
+kan: เหมือนคนสองคนที่ต้องช่วยกันถึงจะทำงานเสร็จสินะ
+film[tease]: นายกำลังพูดถึงงานแล็บอยู่ใช่ไหม?
+kan: ก็ใช่สิ เธอคิดว่าอะไรล่ะ?
+film[smile]: เปล่า
+kan: นี่ ฟิล์ม ถามจริง ๆ เถอะ ทำไมเธอถึงไม่มีแฟน?
+film[shock]: อยู่ ๆ ถามอะไรเนี่ย?
+kan[shy]: ก็เธอไม่ได้แย่นี่ แล้วทำไมถึงยังไม่มีแฟน?
+film[soft]: ก็ยังไม่เจอคนที่ชอบจริง ๆ น่ะ
+film[soft]: เราไม่อยากคบใครแค่เพราะคนอื่นคิดว่าเราควรมีแฟนแล้ว
+kan[soft]: แล้วถ้าเจอคนที่ชอบจริง ๆ ล่ะ?
+film: ก็คงลองดู แล้วนายล่ะ?
+kan[shy]: ก็… ยังไม่เจอคนที่ชอบเหมือนกันมั้ง
+film[tease]: แน่ใจนะ? หน้านายดูไม่น่าเชื่อถือ
+kan[laugh]: เธอนี่มัน…
+~ 2.6 [two(kan,film)] gaze
+film[shy]: เราควรกลับได้แล้วมั้ง เดี๋ยวจะมืดกว่านี้
+kan[vo,soft,wide]: ตั้งแต่วันนั้น ทุกครั้งที่ผมเห็นกลุ่มดาวคนคู่ ผมจะนึกถึงเย็นวันหนึ่งในห้องแล็บ
+kan[vo,soft,insert(gemini)]: เย็นวันที่เราทะเลาะกันจนงานพัง แต่กลับเป็นครั้งแรกที่เราเริ่มเข้าใจกัน
+
+== p1_tease | set=gate | tod=dusk | age=teen | grade=dusk | music=light | amb=school
+cast: kan@860>, tae@1160<
+tae[tease]: วันนี้ไม่กลับบ้านเหรอเพื่อน?
+kan: กลับดิ ถามไรของมึงเนี่ย
+tae[tease]: แล้วทำไมยังอยู่ล่ะจ๊ะ?
+kan: รอเพื่อน
+tae[tease]: เพื่อนชื่อฟิล์มเหรอจ๊ะ?
+kan[angry]: มึงเงียบไปเลย // enter film 1500
+film: พวกนายคุยอะไรกันเนี่ย?
+kan[shy]: ไม่มีอะไร!
+film[tease]: แหม เสียงสูงเชียว หน้านายฟ้องหมดแล้วแหละ
+
+== p1_phone | set=pavilion | tod=day | age=teen | grade=day | music=light | amb=school
+cast: kan@700>:sit:phone, ball@1000<:sit, tae@1240<:sit, ton@1460<:sit, kong@1680<:sit
+ball: ยิ้มอะไร?
+kan[shy]: ไม่ได้ยิ้ม!
+tae[tease]: ฟิล์มส่งมาใช่ไหมล่ะ?
+ton: ปกติมึงไม่เคยสนโทรศัพท์ขนาดนี้
+kong[calm]: อาการหนัก
+cast: kan@700>:sit, ball@1000<:sit, tae@1240<:sit, ton@1460<:sit, kong@1680<:sit, fon@300>, film@120>
+fon: นี่ใช่กันต์ใช่ไหม? ที่ชอบเดินมาส่งเธอ
+kan[shy]: เราไม่ได้เดินมาส่ง
+film[tease]: แล้วนายเดินมาทำไมทุกวัน?
+tae[laugh]: จบแล้วมึง
+
+== p1_fon | set=classroom | tod=dusk | age=teen | grade=dusk | music=love | amb=room
+cast: film@800>:sit, fon@1150<:sit
+fon: เธอชอบกันต์ใช่ไหม?
+film[shy]: ก็… เรายังไม่รู้
+fon[tease]: ถ้าไม่รู้ แล้วทำไมเวลาพูดถึงเขาถึงยิ้ม?
+film[shy]: เราไม่รู้จริง ๆ
+fon[smile]: งั้นก็ลองใช้เวลาอยู่กับเขาไปก่อน
+
+* หนึ่งปีต่อมา\nมัธยมศึกษาปีที่ 5 | 3.4
+
+== p1_flower | set=courtyard | tod=dusk | age=teen | grade=dusk | music=love | amb=school
+cast: kan@820>:flower, film@1100<
+film: อะไร?
+kan: ดอกไม้ไง
+film[tease]: เราเห็น ตาไม่ได้บอด
+kan: ก็ถามว่ามันคืออะไร เราก็ตอบตามที่ถามไง
+film[laugh]: ให้เราทำไมเนี่ย?
+kan[soft]: เห็นแล้วนึกถึงเธอ
+film[shy]: นายพูดแบบนี้กับทุกคนหรือเปล่าเนี่ย?
+kan[shout]: ไม่ ๆ ๆ
+film[smile]: งั้นก็ขอบใจนะ // give kan film flower
+~ 1.6 [wide] walk kan 820>1300; walk film 1100>1560
+cast: kan@1100>, film@1360<
+film: นายเคยคิดไหม ถ้าเราไม่ได้เป็นบัดดี้กัน เราจะเป็นเพื่อนกันหรือเปล่า?
+kan: ไม่รู้สิ วันแรกเธอเกือบโดนจักรยานเรา
+film[tease]: เกือบ?
+kan[laugh]: โอเค โดน
+kan[soft]: แต่ก็ดีแล้วที่เราได้รู้จักกัน
+film[soft]: นายพูดจริงเหรอ?
+kan: จริง
+film[smile]: งั้นเราก็คิดเหมือนกัน
+
+== p1_dad | set=filmhouse | tod=dusk | age=teen | grade=dusk | music=none | amb=street
+cast: kan@700>:bike, film@960<, dad@1450<
+~ 1.4 [wide] policecar
+dad[cold]: เพื่อนฟิล์มเหรอ? // walk dad 1450>1250
+film: ค่ะ
+dad[cold]: ชื่ออะไร?
+kan[worried]: กันต์ครับ
+dad[cold]: เรียนห้องไหน?
+kan[worried]: 4/1 ครับ {สี่ทับหนึ่งครับ}
+dad[cold]: กลับบ้านได้แล้ว
+film: พ่อ…
+dad: พ่อไม่ได้ว่าอะไร แค่ถาม
+kan: งั้นผมกลับก่อนนะครับลุง // wai kan
+dad: ขี่รถดี ๆ
+~ 1.4 [wide] ride kan 700>-400
+film: พ่อไม่ชอบเขาเหรอ?
+dad: พ่อยังไม่รู้จักเขา
+film: แล้วทำไมต้องทำหน้าดุด้วย?
+dad[calm]: หน้าพ่อเป็นแบบนี้
+~ 1.2 [two(film,dad)] laugh film
+
+== p1_confess | set=field | tod=dusk | age=teen | grade=golden | music=love | amb=school
+cast: kan@760>, film@1100<
+kan: ฟิล์ม
+film: หืม มีอะไร?
+kan[shy]: เออ คือเรา…
+kan[shout,cu]: เราชอบเธอ!
+~ 1.2 [cu(film)]
+film[calm]: รู้แล้ว
+kan[shock]: รู้แล้ว? อะไร ๆ
+film[tease]: นายคิดว่าเราดูไม่ออกเหรอ?
+kan: แล้วทำไมไม่พูดล่ะ? รู้ไหมกว่าเราจะพูดออกมาได้เนี่ย
+film[tease]: ก็รอให้นายพูดก่อน มันลำบากนักเหรอ กับการพูดว่าชอบ
+kan[shy]: งั้น…
+film: อืม
+kan[shy,cu]: คบกันไหม?
+film[smile,cu]: ลองดูก็ได้
+~ 0.8 [cu(kan)]
+kan[shout,wide]: วันนี้เป็นวันที่ดีที่สุดในชีวิตเลยเว้ย! // run kan 760>1900
+film[laugh]: นายเนี่ย
+
+== p1_mom | set=dining | tod=night | age=teen | grade=warm | music=light | amb=room
+cast: kan@820>:sit, mom@1150<
+mom[tease]: ช่วงนี้ลูกดูแปลก ๆ นะ
+kan: ไม่แปลกซะหน่อย
+mom[tease]: แน่ใจ๊?
+kan: คร้าบ
+mom[tease]: มีแฟนเหรอ?
+~ 0.9 [cu(kan)] choke kan
+@sfx cough
+kan[shout]: ไม่ ๆ ๆ!
+mom[tease]: แม่ยังไม่ได้บอกเลยว่าเป็นใคร
+kan: ก็ไม่มีจริง ๆ
+mom: อ๋อ งั้นแม่คงคิดไปเอง // exit kan
+mom[soft,wide]: ถ้ามีใครที่ทำให้ลูกไม่ดื้อ แม่ก็โอเคนะ
+
+== p1_dad2 | set=filmhouse | tod=dusk | age=teen | grade=dusk | music=love | amb=street
+cast: kan@760>, film@1000<, dad@1300<
+dad: กันต์
+kan: ครับลุง?
+dad[soft]: ขอบใจที่มาส่งฟิล์ม
+kan: ไม่เป็นไรครับ
+dad[soft]: ลุงอาจจะดูดุ แต่ลุงเป็นห่วงลูก
+kan: ผมเข้าใจครับ
+dad: ดูแลตัวเองด้วย // exit dad
+film[smile]: พ่อชอบนายแล้วมั้ง
+kan[happy]: จริงเหรอ?
+film: น่าจะ
+kan: งั้นเราต้องทำตัวดีขึ้นแล้ว
+film[tease]: เพิ่งคิดได้เหรอ?
+
+== p1_dream2 | set=bedroom | tod=night | age=teen | grade=night | music=dream | amb=night
+cast: kan@860>:sleep
+kan[vo,soft]: หลังจากนั้น ความฝันไม่ได้หายไป แต่ชัดขึ้นเรื่อย ๆ
+kan[vo,soft,insert(dreamroad)]: ผมเริ่มเห็นเสื้อผ้า เริ่มได้ยินเสียงเธอ เริ่มเห็นถนน
+kan[vo,soft,insert(dreamface)]: และในที่สุด ผมก็เห็นหน้าเธอ
+~ 1.0 [mcu(kan)] wake kan
+kan[whisper]: ฟิล์ม…?
+
+== p1_street | set=road | tod=day | age=teen | grade=day | music=dream | amb=street
+cast: kan@760>, film@1040>
+~ 1.6 [wide] walk kan 400>760; walk film 680>1040
+film[worried]: เรารู้สึกว่าตรงนี้แปลก ๆ // turn film
+kan: อะไร? แปลกยังไง
+film[soft]: ไม่รู้สิ เหมือนเราเคยมาที่นี่
+kan[vo,soft,cu(kan)]: ผมเงียบ เพราะผมเองก็เคยเห็นถนนเส้นนี้ ในความฝัน
+
+* มัธยมศึกษาปีที่ 6 | 3.0
+
+== p1_promise | set=pavilion | tod=dusk | age=teen | grade=golden | music=love | amb=school
+cast: kan@860>:sit, film@1080<:sit
+kan[vo,soft,wide]: ช่วงเวลาที่ดีที่สุดของพวกเรา เราเริ่มคิดถึงอนาคตจริง ๆ มหาลัย งาน บ้าน และที่ที่อยากไปด้วยกัน
+film[soft]: ถ้าเราอยู่คนละมหาวิทยาลัย นายจะหายไปไหม?
+kan: ไม่หายหรอก
+film[tease]: จะทิ้งเรา ไปคบกับคนอื่นไหม?
+kan[laugh]: ไม่ดิ จะบ้าเหรอ
+film[soft]: สัญญานะ ว่าเราจะอยู่ด้วยกัน ไม่ทิ้งกัน // hold kan film
+kan[soft,cu]: สัญญา
+
+== p1_books | set=bookstore | tod=day | age=teen | grade=warm | music=light | amb=shop | wear=casual
+cast: kan@820>, film@1080<:book
+film: นายอ่านเล่มนี้หรือยัง?
+kan: ยัง
+film: งั้นซื้อสิ จะได้มีอะไรอ่าน
+kan: เรามีหนังสือเยอะแล้ว
+film[tease]: แต่ไม่เห็นอ่าน
+kan[laugh]: ก็จริง
+film: กันต์ อยากได้อะไรเป็นของขวัญอ่ะ?
+kan[tease]: ไม่รู้สิ เราไม่ได้อยากได้อะไร เพราะเรามีเธอเป็นของขวัญอยู่แล้ว
+film[laugh]: แหวะ
+kan: แล้วเธอล่ะ?
+film[shy]: อยากได้ สร้อยอ่ะ
+film[insert(phone_necklace)]: อย่างงี้
+kan[laugh]: โห รอเราเก็บเงินก่อนนะ
+film[smile]: ได้
+
+== p1_walk | set=street | tod=dusk | age=teen | grade=golden | music=love | amb=street | wear=casual
+cast: kan@700>, film@960>
+~ 1.6 [track] walk kan 700>900; walk film 960>1160
+kan: ถ้ามีเงินเยอะ ๆ เธออยากทำอะไร?
+film[soft]: อยากเที่ยวหลาย ๆ ที่ ที่ที่เราไม่เคยไป
+film: แล้วนายล่ะ?
+kan[soft]: ก็เหมือนกัน
+film[smile]: งั้นไว้เราไปด้วยกันนะ
+kan[smile]: ตกลง // hold kan film
+
+* หลังเรียนจบ | 3.0
+
+== p1_uni | set=dorm | tod=night | age=adult | grade=night | music=light | amb=room | wear=casual
+cast: kan@820>:sit:phone
+kan[vo,soft,wide]: เราสอบติดคนละที่ ผมเข้าวิศวะ ส่วนฟิล์มเข้าแพทย์ ชีวิตยุ่งขึ้น แต่เราก็ยังหาเวลามาเจอกันเสมอ
+@sfx ring
+film[phone]: พรุ่งนี้ว่างไหม กันต์?
+kan: น่าจะว่าง มีอะไร?
+film[phone,soft]: อยากคุยด้วยหน่อย
+kan[tease]: ได้ดิ อยากเห็นหน้าอันหล่อเหลาของเราใช่ปะล่ะ
+~ 1.4 [cu(kan)]
+kan[laugh]: ใจเย็น ๆ เราล้อเล่น ได้อยู่แล้ว
+@sfx hangup
+
+== p1_dream3 | set=road | tod=night | wx=rain | age=adult | grade=dream | music=dream | amb=rain | wear=casual
+cast: kan@820>, film@1200<
+film[soft,cu]: กันต์
+~ 1.2 [wide] run kan 820>1000
+film[cry,cu]: อย่ามาหาเรา
+kan[shock]: ทำไม…
+~ 1.4 [wide] headlights
+@sfx horn
+
+== p1_morning | set=dorm | tod=morning | age=adult | grade=morning | music=none | amb=morning | wear=casual
+cast: kan@820>:sleep
+~ 1.2 [mcu(kan)] wake kan
+kan[tired]: ฝันบ้าอะไรวะ…
+~ 2.2 [insert(phone_msg_meet)]
+kan[soft]: ได้
+
+== p1_cafe | set=cafe | tod=day | age=adult | grade=cafe | music=sad | amb=cafe | wear=casual
+cast: kan@760>:sit, film@1160<:sit
+kan[worried]: เป็นอะไรหรือเปล่า?
+film[sad]: กันต์ เรามีเรื่องจะบอก
+kan: เรื่องอะไร?
+film[soft]: เราได้ทุนแล้วนะ
+kan[happy,shout]: จริงเหรอ! ฟิล์ม เธอทำได้แล้ว! // hold kan film
+kan[worried]: แล้วทำไมต้องร้องไห้ด้วยล่ะ?
+film[cry]: เพราะ เราต้องไปวันนี้
+kan[shock]: วันนี้?
+film[cry]: เงื่อนไขของทุนบอกว่าต้องเดินทางภายในวันนี้เลย เย็นนี้เราต้องไปสนามบินแล้ว
+kan[shock]: เดี๋ยวนะ วันนี้เลยเหรอ?
+film[cry]: เราก็เพิ่งได้รับการยืนยันเหมือนกัน
+kan[sad]: เธอบอกพ่อของเธอยัง?
+film[sad]: บอกแล้วสิ
+kan[sad]: แล้ว เราจะได้เจอกันอีกเมื่อไหร่?
+film[cry]: เราไปเรียนแค่นี้เอง เดี๋ยวก็กลับมาหาแล้ว กันต์รอเราหน่อยนะ
+kan[soft]: ไปทำตามฝันเถอะ เราจะรอ ไม่ต้องห่วง
+kan[tease]: เรากับพ่อเธอ เขาคงไม่โหดกับเราหรอก อยู่ได้
+film[laugh,cry]: สัญญานะ?
+kan[soft]: สัญญา
+~ 1.6 [two(kan,film)] standup kan; standup film; hug kan film
+kan[whisper]: ดูแลตัวเองด้วยนะ
+film[cry]: นายก็เหมือนกันนะ อย่าดื้อให้มากนักล่ะ
+kan[laugh]: โห ตอนจะไปแล้วยังจะด่าเราอีกเหรอ?
+film[laugh,cry]: ก็เราเป็นห่วงนี่นา
+~ 1.4 [two(kan,film)]
+film[soft]: เราต้องไปแล้ว // unhug kan film
+kan[soft]: อืม
+~ 2.0 [wide] walk film 1160>2100; smile film
+kan[vo,soft,cu(kan)]: เขาอยากให้เวลาหยุดอยู่ตรงนี้ แต่รู้ว่าทำไม่ได้
+~ 1.0 [cu(kan)]
+kan[shock,whisper]: สร้อย… // run kan 760>2100
+
+== p1_jewel | set=jewelry | tod=day | age=adult | grade=warm | music=tension | amb=shop | wear=casual
+cast: kan@820>, clerk@1180<
+kan[tired]: เอาอันนี้ครับ // point kan
+~ 1.4 [insert(necklace)]
+kan: กี่บาทครับพี่?
+clerk: สามหมื่นค่ะ
+kan[shock]: โห พี่ ลดได้มั้ย นี่แพงกว่าค่าเทอมผมอีก
+~ 1.0 [cu(kan)]
+kan[tired]: ก็ได้ เอาครับ // give clerk kan necklace
+
+== p1_rain | set=road | tod=dusk | wx=rain | age=adult | grade=rain | music=rush | amb=rain | wear=rain
+cast: kan@-200>
+~ 1.6 [track] run kan -200>800
+kan[tired]: ทันสิ ต้องทัน
+cast: film@960>:car
+film[sad,insert(phone_photos)]: ยังไม่ได้ลาเขาดี ๆ เลย
+film[cry,cu(film)]: ขอเจออีกสักครั้งได้ไหมนะ
+cast: film@-100>:umbrella
+~ 1.4 [track] run film -100>700
+film[worried,phone]: รับสิ กันต์ // phone film
+film[cry]: ขอแค่เจออีกครั้งเดียวก็พอ
+
+== p1_meet | set=crossing | tod=dusk | wx=rain | age=adult | grade=rain | music=love | amb=rain | wear=rain
+cast: kan@560>:box, film@1460<:umbrella
+kan[worried]: ฟิล์มอยู่ไหนนะ // look kan around
+~ 1.6 [wide] see kan film
+film[shout,happy]: กันต์!
+kan[shout,happy]: ฟิล์ม!
+~ 1.6 [wide] walk kan 560>820; walk film 1460>1100
+film[laugh,cry]: นายไปทำอะไรมาน่ะ เปียกหมดแล้ว!
+kan[laugh]: เธอก็เหมือนกันนั่นแหละ!
+~ 2.2 [two(kan,film)] necklace kan film
+film[cry,cu]: นี่ มัน นายซื้อมาจริงด้วย
+kan[soft]: ต่อให้ไกลแค่ไหน เราก็จะไม่ลืมกัน เรายังรักกันอยู่
+film[laugh]: น้ำเน่าจัง
+film[soft]: ขอบคุณนะ // hug kan film
+~ 2.0 [two(kan,film)]
+film[soft]: กันต์ เราต้องไปแล้วนะ // unhug kan film
+~ 1.2 [wide] wave film; walk film 1100>1300
+@sfx horn
+~ 1.4 [wide] accident
+@sfx brakes
+~ 1.8 [title] black
+kan[shout]: ฟิล์ม! // kneel kan 1300; fallen film 1300
+kan[cry]: ฟิล์ม ได้ยินเราไหม?
+film[weak]: กันต์…
+kan[cry]: ไม่เป็นไรนะ เราจะพาเธอไปโรงพยาบาล เดี๋ยวก็ถึงแล้ว
+kan[cry,cu]: อดทนหน่อยนะ ฟิล์ม เราอยู่ตรงนี้แล้ว
+
+== p1_hospital | set=hospital | tod=night | age=adult | grade=hospital | music=none | amb=hospital | wear=rain
+cast: kan@700>, mom@460>, dad@980>, tae@1500<, ball@1700<, ton@1880<, kong@2060<, fon@240>, doctor@1300<:offscreen
+~ 2.4 [wide] wait
+doctor[wide]: คุณพ่อของคุณฟิล์มใช่ไหมครับ? // enter doctor 1300
+kan[worried]: ฟิล์มเป็นยังไงบ้างครับ?
+doctor[sad]: ทีมแพทย์พยายามช่วยเต็มที่แล้วครับ แต่…
+doctor[sad]: ผมเสียใจด้วยครับ เราไม่สามารถช่วยเธอไว้ได้
+kan[shock,cu]: อะไรนะครับหมอ?
+doctor[sad]: คุณฟิล์มเสียชีวิตแล้วครับ
+kan[shock,whisper]: ไม่จริง…
+mom[sad]: กันต์…
+kan[shout,cry]: หมอ! ช่วยเธออีกครั้งไม่ได้เหรอครับ!
+ton[shout]: กันต์ พอ! // grab ton kan
+kan[shout,cry]: ปล่อย! เธอยังอยู่ข้างใน!
+kan[cry]: หมอเข้าไปดูอีกทีไม่ได้เหรอ!
+doctor[sad]: ผมเสียใจจริง ๆ ครับ
+kan[cry,whisper,cu]: ฟิล์ม… // collapse kan; hug mom kan
+kan[cry]: วันนี้ ยังเจอฟิล์มอยู่เลย… ทำไม!
+~ 2.0 [wide] cry tae; cry fon
+dad[cry,whisper,cu]: ลูกพ่อ…
+
+== p1_funeral | set=funeral | tod=day | age=adult | grade=mourning | music=sad | amb=temple | wear=black
+cast: kan@820>:sit, tae@1060<:sit, ball@1260<:sit, ton@1440<:sit, kong@1620<:sit, fon@560>:sit, dad@300>, mom@640>:sit
+~ 3.0 [wide] portrait
+tae[sad,whisper]: กูยังรู้สึกเหมือนเดี๋ยวพรุ่งนี้ก็เจอเขา
+~ 2.4 [cu(kan)]
+tae[soft]: กลับไหม?
+kan[sad]: กูขออยู่ตรงนี้อีกหน่อย มึงไปก่อนเลย
+tae[soft]: งั้นกูอยู่ด้วย
+~ 3.0 [wide] group hug
+
+== p1_after | set=dorm | tod=night | age=adult | grade=lonely | music=sad | amb=room | wear=casual
+cast: kan@820>:sit
+kan[vo,soft,wide]: เพื่อนยังคุยกัน ครูยังสอน คนอื่นยังใช้ชีวิตตามปกติ แต่ผมไม่เหมือนเดิม
+~ 3.0 [insert(chat_sorry)]
+kan[vo,soft]: ผมรู้ว่าไม่มีวันได้รับคำตอบ
+~ 2.0 [insert(necklacebox)]
+~ 2.6 [mcu(kan)] cry kan
+
+== p1_dadtalk | set=filmhouse | tod=dusk | age=adult | grade=mourning | music=sad | amb=street | wear=casual
+cast: kan@760>, dad@1080<
+kan[sad]: ลุง…
+dad[soft]: เป็นยังไงบ้าง?
+kan[sad]: ไม่ค่อยดีครับ
+dad[sad]: ลุงก็เหมือนกัน
+kan[soft]: ลุงคิดถึงเขาไหมครับ?
+dad[soft]: ทุกวัน
+kan[sad]: ผมก็เหมือนกันครับ
+dad[soft]: งั้นก็คิดถึงไป ไม่ต้องรีบลืม
+dad[soft]: แต่ต้องใช้ชีวิตต่อ ฟิล์มคงไม่อยากให้เราร้องไห้หรอก
+kan[vo,sad,cu(kan)]: แต่ผมก็ยังหยุดความรู้สึกตัวเองไม่ได้
+
+== p1_wormhole | set=lecture | tod=day | age=adult | grade=dim | music=mystery | amb=room | wear=casual
+cast: kan@1180>:sit, teacher2@520>
+~ 1.6 [insert(slide_wormhole)]
+teacher2: มีใครเคยได้ยินคำนี้ไหม? เวิร์มโฮล
+student: รูหนอนครับ
+teacher2: ถูกต้อง แนวคิดนี้มาจากทฤษฎีของไอน์สไตน์ ที่บอกว่าอวกาศกับเวลาเชื่อมโยงกันเป็นสเปซไทม์ {ถูกต้อง แนวคิดนี้มาจากทฤษฎีของไอน์สไตน์ ที่บอกว่าอวกาศกับเวลาเชื่อมโยงกันเป็นสเปซ ไทม์}
+teacher2[insert(slide_fold)]: ถ้าสเปซไทม์โค้งงอได้มากพอ จุดสองจุดที่อยู่ห่างกันมาก ก็อาจมีทางเชื่อมที่สั้นกว่าเกิดขึ้นได้ {ถ้าสเปซ ไทม์ โค้งงอได้มากพอ จุดสองจุดที่อยู่ห่างกันมาก ก็อาจมีทางเชื่อมที่สั้นกว่าเกิดขึ้นได้}
+student: เหมือนทางลัดเหรอครับ?
+teacher2: ประมาณนั้น และในทางทฤษฎี มันอาจพาเราเดินทางผ่านเวลาได้
+kan[vo,soft,cu(kan)]: ถ้าวันนั้นผมไปถึงเร็วกว่านี้ ถ้าผมรู้ก่อนว่าจะเกิดอะไรขึ้น
+teacher2: ครูเคยเจอทฤษฎีหนึ่งในหนังสือ เขาบอกว่าการย้อนเวลาต้องมีสี่อย่าง
+teacher2[insert(slide_rules)]: หนึ่ง สิ่งของที่ผูกพันกับอารมณ์อย่างลึกซึ้ง สอง จิตใจที่จดจ่อและเสียใจกับช่วงเวลานั้นอย่างที่สุด
+teacher2[insert(slide_rules)]: สาม รอยต่อของกาลเวลา ที่ไม่ได้มีอยู่ทุกที่ และสี่ ทุกครั้งที่ย้อนกลับไปแก้ไข จะมีราคาที่ต้องจ่ายเสมอ
+teacher2[laugh]: แต่ครูไม่ได้คิดหรอกว่ามันจะจริง
+@sfx classlaugh
+kan[vo,soft,cu(kan)]: ทุกคนหัวเราะ มีแค่ผมที่ในหัววนอยู่กับคำว่าเวลา
+
+== p1_forum | set=dorm | tod=night | age=adult | grade=screen | music=mystery | amb=night | wear=casual
+cast: kan@820>:desk
+~ 2.0 [insert(forum)]
+kan[vo,soft,insert(forum)]: มีใครเคยเจอเหตุการณ์แปลก ๆ ที่ถนนเส้นนี้บ้าง
+kan[vo,soft,insert(forum)]: บางคนบอกว่าบรรยากาศรอบตัวเปลี่ยนไป บางคนบอกว่าเคยเห็นคนที่ควรจะอยู่ที่อื่น เดินผ่านไปต่อหน้า
+kan[vo,soft,insert(forum_quote)]: ยายผมเคยเล่าว่า ถ้าใครเสียใจมากพอแล้วกลับไปที่นั่น บางทีอาจได้เจอสิ่งที่เสียไปอีกครั้ง
+kan[vo,soft,cu(kan)]: ถนนเส้นนั้น คล้ายกับถนนในความฝันของผมมาก
+
+== p1_friends | set=restaurant | tod=day | age=adult | grade=warm | music=mystery | amb=cafe | wear=casual
+cast: kan@700>:sit, tae@1000<:sit, ton@1240<:sit, ball@1460<:sit, kong@1680<:sit
+kan: มึงเคยได้ยินเรื่องถนนเส้นนี้ไหม?
+tae: ถนนไหน?
+tae[soft]: เหมือนเคยได้ยินว่ะ พวกผู้ใหญ่ชอบเล่ากัน ว่ามีคนเคยเห็นอะไรแปลก ๆ
+ton: แม่กูก็เคยพูดถึงนะ แต่เขาบอกว่าเป็นเรื่องเล่าเก่า ๆ
+ball[laugh]: หรือจริง ๆ มันมีผีวะ?
+tae: มึงดูหนังเยอะไปแล้ว
+kong[calm,cu]: มึงอยากรู้ มึงต้องไปดูเอง
+~ 1.6 [cu(kan)] standup kan
+
+== p1_portal | set=road | tod=night | age=adult | grade=night | music=mystery | amb=night | wear=casual
+cast: kan@900>:necklace
+~ 2.2 [wide] stand kan
+kan[vo,soft,insert(necklace)]: ผมกำสร้อยไว้แน่น และนึกถึงทุกความทรงจำระหว่างผมกับเธอ
+kan[tired]: แล้วไงต่อ…
+~ 2.0 [wide]
+kan[tired]: กูมาทำอะไรของกูวะเนี่ย // turn kan
+~ 2.4 [cu(kan)] silence
+kan[shock,whisper]: อะไรวะเนี่ย… // distort
+~ 1.6 [title] whiteout
+@sfx whoosh
+
+== p1_back | set=gate | tod=morning | age=teen | grade=morning | music=love | amb=school | kanwear=adult
+cast: kan@700>:adult, film@1200<
+~ 2.0 [wide] crowd
+kan[cry,whisper,cu]: ฟิล์ม…
+film[cu]: นายเป็นอะไร?
+kan[vo,soft,cu(kan)]: เธอยังมีชีวิต เรื่องเล่าที่ผมคิดว่าไร้สาระมาตลอด มันเป็นเรื่องจริง
+kan[vo,soft]: ถ้าผมย้อนกลับมาได้จริง ผมต้องช่วยเธอให้ได้
+
+== p1_try1 | set=courtyard | tod=day | age=teen | grade=day | music=tension | amb=school | kanwear=adult
+* ครั้งที่ 1 : บอกความจริง | 2.2
+cast: kan@760>:adult, film@1100<, tae@1400<, fon@1600<
+kan[worried]: เชื่อเราเถอะ วันนั้นเธอต้องระวังตัวให้มาก ๆ
+film[worried]: นายพูดเรื่องอะไรของนาย?
+kan[vo,soft]: ไม่มีใครเชื่อ แต่เมื่อผมรู้รายละเอียดที่ไม่มีทางรู้ได้ เธอก็เริ่มลังเล
+~ 1.6 [title] flashcut
+kan[vo,sad]: ทุกอย่างเหมือนจะปลอดภัย แต่สุดท้ายเหตุร้ายก็เกิดขึ้นจากเรื่องอื่น ผมไปช่วยไม่ทัน
+
+== p1_try2 | set=street | tod=day | age=teen | grade=day | music=tension | amb=street | kanwear=adult
+* ครั้งที่ 2 : เปลี่ยนแผน | 2.2
+cast: kan@760>:adult, film@1040>
+kan[vo,soft,track]: ผมไม่บอกเธออีก แต่เปลี่ยนทุกอย่างรอบตัวเธอแทน ที่นัด เส้นทางกลับบ้าน ทีละอย่าง
+~ 1.4 [title] flashcut
+kan[vo,sad]: แต่เหตุการณ์กลับเกิดขึ้นจากสิ่งที่ผมไม่เคยคิดถึง
+
+== p1_try3 | set=courtyard | tod=dusk | age=teen | grade=golden | music=tension | amb=school | kanwear=adult
+* ครั้งที่ 3 : อยู่กับเธอตลอด | 2.2
+cast: kan@820>:adult, film@1100<
+film[tease]: นายวันนี้แปลก ๆ นะ
+kan[soft]: ก็แค่อยากอยู่ด้วย
+film[laugh]: ติดเราขนาดนั้นเลย?
+~ 1.4 [title] flashcut
+kan[vo,sad]: ผมแยกจากเธอแค่ช่วงสั้น ๆ เท่านั้น ต่อให้อยู่ข้างเธอทั้งวัน ผมก็ควบคุมทุกอย่างไม่ได้
+
+== p1_try4 | set=pavilion | tod=dusk | age=teen | grade=dusk | music=tension | amb=school | kanwear=adult
+* ครั้งที่ 4 : ให้ทุกคนช่วย | 2.2
+cast: kan@640>:sit:adult, tae@900<:sit, ball@1120<:sit, ton@1320<:sit, kong@1520<:sit, fon@1720<:sit
+kan[vo,soft,wide]: ผมเล่าบางส่วนให้ทุกคนฟัง ไม่มีใครเข้าใจทั้งหมด แต่ทุกคนเห็นว่าผมจริงจัง วันนั้นไม่มีใครปล่อยให้เธออยู่คนเดียว
+~ 1.4 [title] flashcut
+kan[sad,cu]: เราทำทุกอย่างแล้ว…
+
+== p1_try5 | set=dorm | tod=night | age=adult | grade=lonely | music=tension | amb=night | wear=casual | mess=1
+* ครั้งที่ 5 : ควบคุมทุกอย่าง | 2.2
+cast: kan@820>:desk
+~ 2.0 [wide] papers
+kan[vo,sad]: ใครอยู่ที่ไหน เธอทำอะไร ใครติดต่อเธอ ผมเปลี่ยนทุกอย่าง แต่ไม่มีแผนไหนช่วยเธอได้
+kan[vo,sad,cu(kan)]: ยิ่งผมพยายามเปลี่ยนทุกอย่าง ผมก็ยิ่งเสียเวลาที่ได้อยู่กับเธอไป
+
+== p1_future | set=road | tod=night | age=adult | grade=night | music=mystery | amb=night | wear=casual
+cast: kan@700>, fkan@1250<
+~ 2.4 [wide] stand fkan
+kan[shock]: นาย…
+fkan[calm]: ใช่
+fkan[calm,cu]: นายยังจะพยายามอีกเหรอ?
+kan[vo,soft,cu(kan)]: ประโยคเดียวกับในความฝัน
+kan: นายเคยผ่านมันมาแล้ว?
+fkan[calm]: หลายครั้ง
+kan[angry]: แล้วทำไมไม่บอกเราตั้งแต่แรก?
+fkan[calm]: เพราะสุดท้าย นายต้องเป็นคนเลือกเอง
+kan: เลือกอะไร?
+fkan[soft]: ว่าจะใช้เวลาที่เหลือ พยายามเปลี่ยนวันนั้น
+fkan[soft,cu]: หรือจะใช้มันกับเธอ
+kan[worried]: เราไม่เข้าใจ
+fkan[soft]: ตอนที่เธอยังอยู่ นายคิดว่าพรุ่งนี้มีเสมอ ต่อให้นายเปลี่ยนอะไร เวลาก็ต้องพรากเธอไปอยู่ดี
+fkan[soft]: ถ้ามีอะไรที่อยากทำกับเธอ ใช้เวลากับคนที่นายรักให้คุ้มค่าที่สุด
+kan[cry]: แล้วเธอ ช่วยไม่ได้จริง ๆ เหรอ?
+fkan[soft]: เราเคยคิดว่าต้องช่วยให้ได้ แต่สุดท้ายเราเพิ่งเข้าใจว่า
+fkan[soft,cu]: บางที สิ่งที่เราควรเปลี่ยน ไม่ใช่วันนั้น
+
+== p1_truth | set=park | tod=dusk | age=adult | grade=golden | music=sad | amb=park | wear=casual
+cast: kan@760>:sit, film@1060<:sit
+film[worried]: นายเป็นอะไร?
+kan[sad]: เรามีเรื่องอยากบอก
+kan[vo,soft,wide]: ผมเล่าทุกอย่าง เรื่องวันพรุ่งนี้ เรื่องที่ผมกลับมาหลายครั้ง และทุกครั้งผมก็ล้มเหลว
+film[soft]: แล้วพรุ่งนี้ล่ะ? นายจะช่วยเราอีกไหม?
+kan[cry]: เราอยากช่วย
+film[soft]: แต่?
+kan[cry,shout]: เราอยากจะช่วย!
+kan[cry]: เราแค่ไม่อยากเสียเธอไป
+film[soft]: แต่นายก็เสียเราไปทุกครั้งอยู่แล้ว
+kan[cry]: เราไม่รู้ว่าต้องทำยังไงอีกต่อไปแล้ว
+film[soft]: งั้นก็ไม่ต้องทำอะไรสิ
+kan[sad]: หมายความว่ายังไง?
+film[smile,cu]: อยู่กับเราก็พอแล้วนี่นา // hold film kan
+
+== p1_oneday | set=street | tod=day | age=adult | grade=golden | music=love | amb=street | wear=casual
+* อีกเพียงหนึ่งวัน | 2.6
+cast: kan@760>, film@1020>
+kan[vo,soft,insert(montage_day)]: เราใช้เวลาทั้งวันด้วยกัน กินของที่ชอบ เดินเล่น เจอเพื่อน แกล้งกัน หัวเราะกับเรื่องไร้สาระ
+kan[vo,soft,track]: เหมือนวันธรรมดาวันหนึ่ง แต่เราทั้งคู่รู้ว่ามันไม่ธรรมดา
+
+== p1_sunset | set=field | tod=dusk | age=adult | grade=golden | music=love | amb=park | wear=casual
+cast: kan@820>, film@1080<
+film[smile]: วันนี้สนุกมากเลยอ่ะ
+kan[soft]: อืม
+film[soft]: แต่เสียดายจัง
+kan: เรื่องอะไร?
+film[sad,cu]: ที่เราไม่มีวันพรุ่งนี้ด้วยกัน
+~ 1.4 [cu(kan)] cry kan
+film[cry,soft]: แต่เรายังมีวันนี้นะ // hug film kan
+kan[cry]: ขอบคุณนะ
+film[soft]: เรื่องอะไร?
+kan[cry]: ที่กลับมาให้เราเจออีกครั้ง
+film[cry,smile]: เราก็ขอบคุณ
+kan: เรื่องอะไร?
+film[cry,smile,cu]: ที่กลับมาหาเรา
+~ 2.6 [over] kiss film kan
+kan[soft]: สร้อยนี้ จะทำให้ความรักของเราเชื่อมต่อกัน ไม่ว่าจะอยู่ช่วงเวลาไหน // necklace kan film
+film[cry,smile]: ขอบคุณนะ
+~ 3.0 [over] hug kan film
+
+== p1_letgo | set=road | tod=night | age=adult | grade=night | music=hope | amb=night | wear=casual
+cast: kan@960>
+~ 2.0 [wide] stand kan
+kan[vo,soft,cu(kan)]: ผมกลับมายังปัจจุบัน ไม่มีเธอ ไม่มีเสียงของเธอ ผมร้องไห้ แต่ครั้งนี้ไม่ใช่ความโกรธ // cry kan
+kan[vo,soft]: ผมเคยคิดว่า ถ้าย้อนเวลาได้ ผมจะต้องเปลี่ยนทุกอย่าง แต่สิ่งที่ผมต้องการมาตลอด ไม่ใช่การเปลี่ยนอดีต
+kan[vo,soft,cu(kan)]: ผมแค่อยากมีเวลาอีกหนึ่งวันกับเธอ และผมได้มันมาแล้ว // smile kan
+~ 2.6 [wide] walk kan 960>2200
+
+* หลายปีผ่านไป | 3.0
+
+== p1_porch | set=filmhouse | tod=dusk | age=older | grade=golden | music=hope | amb=street | wear=adult
+cast: kan@820>:sit, dad@1080<:sit
+dad[soft]: ช่วงนี้เป็นยังไงบ้าง?
+kan[smile]: ก็ดีครับ
+dad[soft]: ยังคิดถึงเขาอยู่ไหม?
+kan[smile]: ครับ
+dad[soft]: แล้วอยากกลับไปไหม?
+kan[soft]: เมื่อก่อนอยากครับ
+dad[soft]: แล้วตอนนี้?
+kan[smile,cu]: ตอนนี้ผมอยากใช้ชีวิตต่อมากกว่า
+dad[smile]: ฟิล์มคงดีใจ
+
+== p1_school | set=corridor | tod=dusk | age=older | grade=golden | music=hope | amb=school | wear=adult
+cast: kan@600>
+~ 3.0 [track] walk kan 300>900
+~ 2.0 [cu(kan)] smile kan
+cast: kan@900>, film@1180<:ghost
+film[soft]: วันนี้สนุกดีนะ
+kan[soft]: อืม
+film[soft]: เสียดายจัง
+kan[soft]: เรื่องอะไร?
+film[soft]: ที่เราไม่มีวันพรุ่งนี้ด้วยกัน
+kan[smile,cu]: แต่เรามีวันนี้นะ
+~ 2.0 [two(kan,film)] fade film
+~ 2.2 [insert(phone_mom)]
+kan[smile]: ครับ กำลังจะไป
+
+== p1_end | set=street | tod=dusk | age=older | grade=golden | music=finale | amb=street | wear=adult
+cast: kan@600>
+kan[vo,soft,track]: ผมเคยคิดว่า ถ้าเราย้อนเวลากลับไปได้ เราจะเปลี่ยนทุกอย่าง เราจะทำให้เธออยู่ต่อ เราจะทำให้พรุ่งนี้ของเรามาถึง // walk kan 600>1500
+kan[vo,soft]: แต่สุดท้าย ผมถึงได้รู้ว่า ชีวิตไม่ได้มีค่าเพราะเราแก้ไขมันได้ มันมีค่าเพราะเราได้ใช้มัน
+kan[vo,soft,insert(memory_laugh)]: ครั้งสุดท้ายที่ผมกลับไป ผมไม่ได้กลับไปเพื่อเปลี่ยนอะไร ผมแค่กลับไปใช้ชีวิตธรรมดา ๆ กับเธออีกครั้ง
+kan[vo,soft]: และนั่นก็เพียงพอแล้ว
+kan[vo,soft,wide]: เพราะบางที เราไม่จำเป็นต้องมีวันพรุ่งนี้กับคนที่เรารัก เพื่อที่จะรู้ว่า วันที่เราเคยมีด้วยกันนั้น มีค่ามากแค่ไหน
+~ 6.0 [title] endtitle
+~ 12.0 [title] credits

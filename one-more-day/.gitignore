@@ -1,2 +1,4 @@
+build/
 tools/model/
+tools/__pycache__/
 .venv/
