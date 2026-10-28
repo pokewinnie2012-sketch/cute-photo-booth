@@ -152,7 +152,7 @@ defSet('bedroom', {
     if (o.mess) { for (let i = 0; i < 26; i++) { c.save(); c.translate(200 + hash(i) * 1500, 860 + hash(i + 3) * 180); c.rotate(hash(i + 1) * 3); c.fillStyle = '#f4f1ea'; c.fillRect(-40, -28, 80, 56); c.restore(); } }
   },
   dyn(t, o) { const td = todOf(o); if (td !== TOD.night) lightShaft(180, 260, 420, 620, 560, 'rgba(255,236,190,.18)'); else glow(1620, 560, 260, 'rgba(255,200,140,.18)'); },
-  front(t, o) { c.fillStyle = '#86b2dc'; if (o.blanket) { rr(520, 760, 720, 160, 40); c.fill(); } },
+  front(t, o) { c.fillStyle = '#86b2dc'; if (o.blanket) { rr(440, 668, 800, 250, 46); c.fill(); c.fillStyle = 'rgba(255,255,255,.18)'; rr(440, 668, 800, 26, 13); c.fill(); c.strokeStyle = 'rgba(40,70,110,.18)'; c.lineWidth = 3; for (let i = 0; i < 4; i++) { c.beginPath(); c.moveTo(560 + i * 170, 700); c.quadraticCurveTo(600 + i * 170, 800, 570 + i * 170, 910); c.stroke(); } } },
 });
 defSet('dorm', Object.assign({}, { paint(o) { SETS.bedroom.paint(Object.assign({}, o, { age: 'adult' })); c.fillStyle = '#4a4a52'; rr(1520, 470, 200, 130, 8); c.fill(); c.fillStyle = o.tod === 'night' ? '#9cc8ff' : '#cfe0f0'; rr(1532, 482, 176, 106, 4); c.fill(); }, dyn: (t, o) => { SETS.bedroom.dyn(t, o); if (o.tod === 'night') glow(1620, 535, 320, 'rgba(140,190,255,.22)'); } }));
 SETS.dorm = Object.assign({}, SETS.bedroom, SETS.dorm, { front: SETS.bedroom.front });

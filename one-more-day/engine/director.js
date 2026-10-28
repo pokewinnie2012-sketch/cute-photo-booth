@@ -135,7 +135,8 @@ function poseFor(ch, stage, sc, t, L) {
   if (ch.states.has('ground')) { st.ground = true; st.emo = ch.emo === 'neutral' ? 'shock' : ch.emo; F = [.35, .1]; B = [-.35, .1]; }
   if (ch.states.has('fallen')) { st.lie = 1; st.y = set.floor - 20; st.emo = ch.emo === 'neutral' ? 'weak' : ch.emo; st.blink = .25; }
   if (ch.states.has('sleep')) { st.lie = 1; st.y = set.floor - 150; st.emo = 'calm'; st.blink = 0; }
-  if (ch.states.has('sitbed')) { st.seat = true; st.y = set.floor - 60; }
+  if (ch.states.has('sitbed')) { st.seat = true; st.noLegs = true; st.y = set.floor + 70; if (sc.opts.set === 'bedroom') st.x = ch.x - 440; }  // sits up where the pillow is
+  if ((ch.states.has('sitbed') || ch.states.has('sleep')) && !st.wear) st.wear = 'home';
   if (ch.states.has('ghost')) { st.alpha = (ch.alpha ?? 1) * .55; st.glow = true; }
   if (ch.states.has('car')) st.carSeat = true;
   if (ch.wearsNecklace || (ch.id === 'film2' && o.wear === 'formal')) st.necklace = true;

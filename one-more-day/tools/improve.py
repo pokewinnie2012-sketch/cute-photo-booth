@@ -55,18 +55,13 @@ def improve(l, max_cer):
     plain = v.expand(ref); sp = v.line_speed(l)
     old = sf.read(path, dtype='float32')[0]
     h = heard_in_context(old); best = (v.cer(ref, h), info['take'], h, old)
-    for kind in ('det', 'det2'):
-        for carrier in CARRIERS:
-            for s in (sp, round(sp * .88, 3)):
-                for txt in (plain, v.respell(plain)):
-                    x = cut_take(kind, carrier, txt, s)
-                    if x is None: continue
-                    h = heard_in_context(x); score = v.cer(ref, h)
-                    if score < best[0]: best = (score, f'cut-{kind}-{CARRIERS.index(carrier)}', h, x)
-                    if best[0] <= .15: break
-                if best[0] <= .15: break
-            if best[0] <= .15: break
+    takes = [('det', 0, sp, plain), ('det', 0, round(sp * .88, 3), plain), ('det', 0, sp, v.respell(plain)), ('det2', 1, sp, plain)]
+    for kind, ci, s, txt in takes:
         if best[0] <= .15: break
+        x = cut_take(kind, CARRIERS[ci], txt, s)
+        if x is None: continue
+        h = heard_in_context(x); score = v.cer(ref, h)
+        if score < best[0]: best = (score, f'cut-{kind}-{ci}', h, x)
     score, take, h, x = best
     if take != info['take']: sf.write(path, x, SR)
     new = dict(info, cer=round(score, 3), take=take, heard=h, dur=round(len(x) / SR, 3), pass2=True, cer1=info['cer'])

@@ -191,6 +191,7 @@ function drawScene(sc, shot, t, k) {
   const order = Object.keys(poses).sort((a, b) => (poses[a].s - poses[b].s) || (poses[a].y - poses[b].y));
   for (const id of order) {
     const st = poses[id];
+    if (id === cam.ots) continue;            // drawn as the out-of-focus foreground shoulder instead
     if (cam.focus && id !== cam.focus && id !== cam.ots) st.blur = Math.max(st.blur || 0, 3);
     if (st.bikeRide) bike(st.x - 10 * st.face, st.y, st.s, st.face, (st.walk || 0) * 1.3);
     if (stage.chars[id].states.has('car')) carInterior(t, st);

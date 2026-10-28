@@ -90,6 +90,7 @@ function outfitFor(id, p, wear, age) {
   if (wear === 'black') return resolveOutfit(OUTFITS[p.male ? 'black_m' : 'black_f'], p);
   if (wear === 'office') return resolveOutfit(OUTFITS[p.male ? 'office_m' : 'office_f'], p);
   if (wear === 'casual' && !p.wear.any) return resolveOutfit(OUTFITS[p.male ? 'casual_m' : (id === 'film' ? 'casual_f' : 'casual_f3')], p);
+  if (wear === 'home') return resolveOutfit(OUTFITS[p.male ? 'home_m' : 'home_f'], p);
   if (wear === 'formal') return resolveOutfit(OUTFITS[p.male ? 'suit_m' : 'dress_f'], p);
   const key = p.wear[age] || p.wear.any || p.wear.adult || p.wear.teen;
   return resolveOutfit(OUTFITS[key], p);
@@ -158,7 +159,7 @@ function figure(id, p, st, T) {
   c.scale(s * f, s);
   if (st.lie) c.rotate(-Math.PI / 2 * st.lie);
   const ground = st.ground ? 1 : 0, sit = st.seat && !ground ? 1 : 0, kneel = st.kneel ? 1 : 0;
-  legs(p, of, st, T, sit, kneel, ground);
+  if (!st.noLegs) legs(p, of, st, T, sit, kneel, ground);   // noLegs: under a blanket
   c.translate(0, sit * 225 + kneel * 290 + ground * 450);
   c.rotate((st.lean || 0) * .12);
   const sw = (p.male ? 96 : 82) * (p.wide || 1);
@@ -414,7 +415,7 @@ function eye(p, x, y, w, h, open, look, tn, P) {
   // upper lid + lashes, crease, lower lid
   c.strokeStyle = '#1e120e'; c.lineWidth = 3.2; c.lineCap = 'round';
   c.beginPath(); c.moveTo(x - w / 2, y + 1); c.bezierCurveTo(x - w / 4, y - hh * 1.15, x + w / 4, y - hh * 1.2, x + w / 2 + 2, y - 2); c.stroke();
-  if (!P.male) { c.lineWidth = 2; c.beginPath(); c.moveTo(x + w / 2, y - 2); c.lineTo(x + w / 2 + 5, y - 6); c.moveTo(x + w / 2 - 3, y - hh * .8); c.lineTo(x + w / 2 + 2, y - hh * 1.2); c.stroke(); }
+  if (!P.male) { const sd = x > tn * 16 ? 1 : -1, ox = x + sd * w / 2; c.lineWidth = 2.2; c.beginPath(); c.moveTo(ox - sd * 1, y - 2); c.quadraticCurveTo(ox + sd * 4, y - 4, ox + sd * 7, y - 8); c.moveTo(ox - sd * 5, y - hh * .85); c.quadraticCurveTo(ox, y - hh * 1.05, ox + sd * 3, y - hh * 1.35); c.stroke(); }
   c.strokeStyle = 'rgba(120,60,40,.35)'; c.lineWidth = 1.4; c.beginPath(); c.moveTo(x - w * .35, y - hh - 4); c.quadraticCurveTo(x, y - hh * 1.5 - 5, x + w * .42, y - hh - 3); c.stroke();
   c.strokeStyle = 'rgba(120,60,40,.3)'; c.beginPath(); c.moveTo(x - w * .35, y + hh * .7); c.quadraticCurveTo(x, y + hh * 1.05, x + w * .4, y + hh * .55); c.stroke();
   c.restore();
@@ -428,7 +429,7 @@ function mouthDraw(p, tn, y, ex, talk, T) {
   if (open > .06) {
     const oh = 3 + open * 13;
     c.fillStyle = '#3a1514'; c.beginPath(); c.moveTo(x - w, y - curve * 3); c.quadraticCurveTo(x, y - 2 - curve * 2, x + w, y - curve * 3 - sm * 3); c.quadraticCurveTo(x, y + oh + curve * 2, x - w, y - curve * 3); c.fill();
-    c.fillStyle = 'rgba(255,255,255,.85)'; c.beginPath(); c.moveTo(x - w * .7, y - 1); c.quadraticCurveTo(x, y + 2, x + w * .7, y - 1); c.lineTo(x + w * .6, y + 2 + Math.min(4, oh * .25)); c.quadraticCurveTo(x, y + 4 + Math.min(4, oh * .25), x - w * .6, y + 2 + Math.min(4, oh * .25)); c.fill();
+    if (oh > 6) { const th = Math.min(3.2, oh * .2); c.fillStyle = 'rgba(240,232,226,.72)'; c.beginPath(); c.moveTo(x - w * .55, y - .5); c.quadraticCurveTo(x, y + 1.5, x + w * .55, y - .5); c.lineTo(x + w * .48, y + th); c.quadraticCurveTo(x, y + th + 1.5, x - w * .48, y + th); c.fill(); }
     if (oh > 9) { c.fillStyle = '#b8555a'; ell(x, y + oh * .7, w * .45, oh * .2); }
     c.strokeStyle = lip; c.lineWidth = 2.4; c.beginPath(); c.moveTo(x - w, y - curve * 3); c.quadraticCurveTo(x, y - 3 - curve * 2, x + w, y - curve * 3 - sm * 3); c.stroke();
     c.fillStyle = shade(lip, .15, .55); c.beginPath(); c.moveTo(x - w * .8, y + oh * .9); c.quadraticCurveTo(x, y + oh + 6, x + w * .8, y + oh * .9); c.quadraticCurveTo(x, y + oh + 1, x - w * .8, y + oh * .9); c.fill();
@@ -450,8 +451,12 @@ function hairBack(p, tn, wet, T) {
   switch (p.hair) {
     case 'film': case 'film2': {
       const len = p.hair === 'film' ? 350 : 250;
-      c.beginPath(); c.moveTo(-70 - tn * 6, hy - 40); c.quadraticCurveTo(-90, hy + 120, -80 + Math.sin(T * .8) * sway, hy + len);
-      c.quadraticCurveTo(-10, hy + len + 20, 62, hy + len - 20 + Math.sin(T * .8 + 1) * sway); c.quadraticCurveTo(80, hy + 120, 66, hy - 40); c.closePath(); c.fill();
+      c.beginPath(); c.moveTo(-28, hy - 80); c.quadraticCurveTo(-80 - tn * 6, hy - 66, -84 - tn * 4, hy + 10);
+      c.quadraticCurveTo(-94, hy + 130, -80 + Math.sin(T * .8) * sway, hy + len);
+      c.quadraticCurveTo(-10, hy + len + 20, 62, hy + len - 20 + Math.sin(T * .8 + 1) * sway);
+      c.quadraticCurveTo(86, hy + 130, 80, hy + 10); c.quadraticCurveTo(76, hy - 64, 28, hy - 80); c.closePath(); c.fill();
+      strands(shade(p.hc, wet ? -.35 : -.18, .7), u => [-86 + u * 18, hy + 30 + u * 40], 5, len - 70, T, sway);
+      strands(shade(p.hc, wet ? -.35 : -.18, .7), u => [66 + u * 16, hy + 30 + u * 40], 4, len - 90, T, sway);
       c.fillStyle = 'rgba(255,255,255,.05)'; ell(-40, hy + 120, 20, 140, .1);
       break;
     }

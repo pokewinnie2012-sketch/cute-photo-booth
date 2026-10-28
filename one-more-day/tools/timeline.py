@@ -56,7 +56,7 @@ def build(src):
                 if it['shot']: last_shot = (it['shot']['kind'], it['shot']['args'])
                 elif last_shot is None: last_shot = ('wide', [])
                 push_shot(last_shot[0], last_shot[1], a, b)
-                if it['shot'] and it['shot']['kind'] == 'insert': last_shot = None
+                if it['shot'] and it['shot']['kind'] in ('insert', 'title'): last_shot = None   # cut back to the scene afterwards
                 t = b
             elif ty == 'line':
                 raw = os.path.join(RAW, key_for(it) + '.wav')
