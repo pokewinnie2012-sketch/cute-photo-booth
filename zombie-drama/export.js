@@ -1,5 +1,7 @@
-// Render index.html frame-by-frame into a TikTok-ready 1080x1920 MP4 with the synthesized soundtrack.
-// Usage: node export.js [out.mp4] [fps]
+// Render an episode page frame-by-frame into a TikTok-ready 1080x1920 MP4 with the synthesized soundtrack.
+// Usage: node export.js [episode.html] [out.mp4] [fps]
+//   node export.js                -> index.html (EP.1) -> zombie-triampat-ep1.mp4
+//   node export.js ep2.html       -> zombie-triampat-ep2.mp4
 const { chromium } = require('playwright');
 const { spawn } = require('child_process');
 const path = require('path');
@@ -7,12 +9,15 @@ const fs = require('fs');
 const os = require('os');
 
 (async () => {
-  const out = path.resolve(process.argv[2] || path.join(__dirname, 'zombie-triampat-ep1.mp4'));
-  const fps = Number(process.argv[3] || 30);
+  const args = process.argv.slice(2);
+  const html = path.resolve(__dirname, args[0] && args[0].endsWith('.html') ? args.shift() : 'index.html');
+  const ep = (path.basename(html).match(/ep(\d+)/) || [, '1'])[1];
+  const out = path.resolve(args[0] || path.join(__dirname, `zombie-triampat-ep${ep}.mp4`));
+  const fps = Number(args[1] || 30);
   const browser = await chromium.launch();
   const page = await browser.newPage({ viewport: { width: 1080, height: 1920 } });
   page.on('pageerror', e => console.error('page error:', e.message));
-  await page.goto('file://' + path.join(__dirname, 'index.html') + '?export=1');
+  await page.goto('file://' + html + '?export=1');
   await page.waitForFunction(() => window.__ready === true, null, { timeout: 60000 });
 
   const duration = await page.evaluate(() => window.DRAMA.duration);
